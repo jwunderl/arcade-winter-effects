@@ -1,12 +1,13 @@
-
-namespace effects {
+namespace wintereffects {
     class SnowBallFactory extends particles.SprayFactory {
         protected sources: Image[];
         protected ox: Fx8;
         protected oy: Fx8;
         protected galois: Math.FastRandom;
-        protected minPercent: number;
-        protected maxPercent: number;
+        minPercent: number;
+        maxPercent: number;
+        lifespan: number;
+        rotateImagesRate: number;
 
         constructor(particleSpeed: number, arcCenter: number, arcDegrees: number, sources: Image[]) {
             super(
@@ -18,6 +19,7 @@ namespace effects {
             this.minPercent = 30;
 
             this.maxPercent = 180;
+            this.lifespan = 2000;
 
             // Base offsets off of initial shape
             this.ox = Fx8(sources[0].width >> 1);
@@ -26,6 +28,9 @@ namespace effects {
         }
 
         drawParticle(p: particles.Particle, x: Fx8, y: Fx8) {
+            if (this.rotateImagesRate) {
+                p.color = (p.color + this.rotateImagesRate) % this.sources.length;
+            }
             const pImage = this.sources[Math.floor(p.color)];
             const width = pImage.width * p.data;
             const height = pImage.height * p.data;
@@ -51,13 +56,13 @@ namespace effects {
             p.data = this.galois.randomRange(this.minPercent, this.maxPercent) / 100;
             p._x = Fx8(anchor.x - (anchor.width >> 1) + ((pImage.width * p.data) >> 1));
             p._y = Fx8(anchor.y - (anchor.height >> 1) + ((pImage.height * p.data) >> 1));
-            p.lifespan = 2000;
+            p.lifespan = this.lifespan;
             return p;
         }
     }
 
     //% fixedInstance whenUsed block="snowball"
-    export const snowball = new ScreenEffect(15, 250, 0, function (anchor: particles.ParticleAnchor, particlesPerSecond: number) {
+    export const snowball = new effects.ScreenEffect(15, 250, 0, function (anchor: particles.ParticleAnchor, particlesPerSecond: number) {
         const factory = new SnowBallFactory(
             100, // particle speed
             45, // arc center degrees
@@ -121,25 +126,8 @@ namespace effects {
     });
 
     //% fixedInstance whenUsed block="candy cane"
-    export const candyCanes = new ScreenEffect(15, 35, 0, function (anchor: particles.ParticleAnchor, particlesPerSecond: number) {
-        class CandyCaneFactory extends SnowBallFactory {
-            constructor(particleSpeed: number, arcCenter: number, arcDegrees: number, sources: Image[]) {
-                super(
-                    particleSpeed,
-                    arcCenter,
-                    arcDegrees,
-                    sources
-                );
-                this.minPercent = 15;
-                this.maxPercent = 150;
-            }
-            drawParticle(p: particles.Particle, x: Fx8, y: Fx8) {
-                p.color = (p.color + .25) % this.sources.length;
-                super.drawParticle(p, x, y);
-            }
-        }
-
-        const factory = new CandyCaneFactory(
+    export const candyCanes = new effects.ScreenEffect(15, 35, 0, function (anchor: particles.ParticleAnchor, particlesPerSecond: number) {
+        const factory = new SnowBallFactory(
             100, // particle speed
             45, // arc center degrees
             92, // arc degrees
@@ -346,12 +334,17 @@ namespace effects {
             0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
             `]
         );
+
+        factory.minPercent = 15;
+        factory.maxPercent = 150;
+        factory.rotateImagesRate = .25;
+
         const src = new particles.ParticleSource(anchor, particlesPerSecond, factory);
         return src;
     });
 
     //% fixedInstance whenUsed block="holiday cookies"
-    export const holidayCookies = new ScreenEffect(15, 70, 0, function (anchor: particles.ParticleAnchor, particlesPerSecond: number) {
+    export const holidayCookies = new effects.ScreenEffect(15, 70, 0, function (anchor: particles.ParticleAnchor, particlesPerSecond: number) {
         class HolidayCookieFactory extends SnowBallFactory {
             constructor(particleSpeed: number, arcCenter: number, arcDegrees: number, sources: Image[]) {
                 super(
@@ -506,7 +499,7 @@ namespace effects {
     });
 
     //% fixedInstance whenUsed block="snowflakes"
-    export const snowflakes = new ScreenEffect(15, 80, 0, function (anchor: particles.ParticleAnchor, particlesPerSecond: number) {
+    export const snowflakes = new effects.ScreenEffect(15, 80, 0, function (anchor: particles.ParticleAnchor, particlesPerSecond: number) {
         class SnowFlakeFactory extends SnowBallFactory {
             constructor(particleSpeed: number, arcCenter: number, arcDegrees: number, sources: Image[]) {
                 super(
