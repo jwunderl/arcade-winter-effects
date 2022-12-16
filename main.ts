@@ -1,5 +1,5 @@
 namespace wintereffects {
-    class SnowBallFactory extends particles.SprayFactory {
+    class ScaledShapeFactory extends particles.SprayFactory {
         protected sources: Image[];
         protected ox: Fx8;
         protected oy: Fx8;
@@ -8,6 +8,7 @@ namespace wintereffects {
         maxPercent: number;
         lifespan: number;
         rotateImagesRate: number;
+        growthRate: number;
 
         constructor(particleSpeed: number, arcCenter: number, arcDegrees: number, sources: Image[]) {
             super(
@@ -30,6 +31,9 @@ namespace wintereffects {
         drawParticle(p: particles.Particle, x: Fx8, y: Fx8) {
             if (this.rotateImagesRate) {
                 p.color = (p.color + this.rotateImagesRate) % this.sources.length;
+            }
+            if (this.growthRate) {
+                p.data += this.growthRate;
             }
             const pImage = this.sources[Math.floor(p.color)];
             const width = pImage.width * p.data;
@@ -61,13 +65,9 @@ namespace wintereffects {
         }
     }
 
-    //% fixedInstance whenUsed block="snowball"
-    export const snowball = new effects.ScreenEffect(15, 250, 0, function (anchor: particles.ParticleAnchor, particlesPerSecond: number) {
-        const factory = new SnowBallFactory(
-            100, // particle speed
-            45, // arc center degrees
-            92, // arc degrees
-            [img`
+    function snowballShapes() {
+        return [
+            img`
                 . . . . . 1 9 9 9 9 1 . . . . . 
                 . . . 1 9 9 1 1 1 1 9 9 9 . . . 
                 . . 1 9 1 1 1 1 1 1 1 1 9 9 . . 
@@ -102,237 +102,251 @@ namespace wintereffects {
                 . . . . . 6 8 6 b b 6 8 8 . . .
                 . . . . . . . 8 8 8 8 . . . . .
             `, img`
-            . . . . . 1 9 9 9 9 1 . . . . .
-            . . . 1 9 9 1 1 1 1 9 9 9 . . .
-            . . 1 9 1 1 1 1 1 1 1 1 9 9 . .
-            . 1 9 1 1 1 1 1 d d 1 1 1 9 9 .
-            . 9 1 1 1 1 1 1 1 1 d 1 1 1 6 .
-            1 9 1 1 1 1 1 1 1 1 1 1 1 1 9 6
-            9 1 1 1 1 1 1 1 1 1 1 1 1 d d 6
-            9 1 1 1 1 1 1 1 1 1 1 1 1 d b 6
-            9 9 1 1 1 1 1 1 1 1 1 1 d d 6 6
-            . 6 d 1 1 1 1 1 1 1 1 d d b 8 .
-            . 6 9 d d 1 1 1 1 d d d b 6 8 .
-            . . 6 9 d d d d d d d b 6 8 . .
-            . . . 6 8 6 b d d b 6 8 8 . . .
-            . . . . . 8 8 8 8 8 8 . . . . .
-            . . . . . . . . . . . . . . . .
-            . . . . . . . . . . . . . . . .
+                . . . . . 1 9 9 9 9 1 . . . . .
+                . . . 1 9 9 1 1 1 1 9 9 9 . . .
+                . . 1 9 1 1 1 1 1 1 1 1 9 9 . .
+                . 1 9 1 1 1 1 1 d d 1 1 1 9 9 .
+                . 9 1 1 1 1 1 1 1 1 d 1 1 1 6 .
+                1 9 1 1 1 1 1 1 1 1 1 1 1 1 9 6
+                9 1 1 1 1 1 1 1 1 1 1 1 1 d d 6
+                9 1 1 1 1 1 1 1 1 1 1 1 1 d b 6
+                9 9 1 1 1 1 1 1 1 1 1 1 d d 6 6
+                . 6 d 1 1 1 1 1 1 1 1 d d b 8 .
+                . 6 9 d d 1 1 1 1 d d d b 6 8 .
+                . . 6 9 d d d d d d d b 6 8 . .
+                . . . 6 8 6 b d d b 6 8 8 . . .
+                . . . . . 8 8 8 8 8 8 . . . . .
+                . . . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . . . .
             `
-            ]
+        ];
+    }
+
+    //% fixedInstance whenUsed block="snowball"
+    export const snowball = new effects.ScreenEffect(15, 250, 0, function (anchor: particles.ParticleAnchor, particlesPerSecond: number) {
+        const factory = new ScaledShapeFactory(
+            100, // particle speed
+            45, // arc center degrees
+            92, // arc degrees
+            snowballShapes()
         );
         const src = new particles.ParticleSource(anchor, particlesPerSecond, factory);
         return src;
     });
 
+    function candyCaneShapes() {
+        return [
+            img`
+                0 0 0 0 0 0 0 F F F F F F F 0 0 0 0 0 0 0 0 0 0
+                0 0 0 0 0 0 F 1 1 1 1 1 2 2 F 0 0 0 0 0 0 0 0 0
+                0 0 0 0 0 F 1 1 1 1 1 1 2 2 2 F 0 0 0 0 0 0 0 0
+                0 0 0 0 F 2 2 1 1 1 1 2 2 2 2 2 F 0 0 0 0 0 0 0
+                0 0 0 0 F 2 2 2 2 1 1 2 2 2 2 2 F 0 0 0 0 0 0 0
+                0 0 0 0 F 2 2 2 2 F F 2 2 2 2 1 F 0 0 0 0 0 0 0
+                0 0 0 0 F 2 2 2 F 0 0 F 2 1 1 1 F 0 0 0 0 0 0 0
+                0 0 0 0 F 1 1 1 F 0 0 F 1 1 1 1 F 0 0 0 0 0 0 0
+                0 0 0 0 F 1 1 1 F 0 0 F 1 1 1 1 F 0 0 0 0 0 0 0
+                0 0 0 0 0 F 1 F 0 0 0 F 2 2 2 2 F 0 0 0 0 0 0 0
+                0 0 0 0 0 0 F 0 0 0 0 F 2 2 2 2 F 0 0 0 0 0 0 0
+                0 0 0 0 0 0 0 0 0 0 0 F 2 2 2 2 F 0 0 0 0 0 0 0
+                0 0 0 0 0 0 0 0 0 0 0 F 2 2 2 2 F 0 0 0 0 0 0 0
+                0 0 0 0 0 0 0 0 0 0 0 F 1 1 1 1 F 0 0 0 0 0 0 0
+                0 0 0 0 0 0 0 0 0 0 0 F 1 1 1 1 F 0 0 0 0 0 0 0
+                0 0 0 0 0 0 0 0 0 0 0 F 2 2 2 2 F 0 0 0 0 0 0 0
+                0 0 0 0 0 0 0 0 0 0 0 F 2 2 2 2 F 0 0 0 0 0 0 0
+                0 0 0 0 0 0 0 0 0 0 0 F 2 2 2 2 F 0 0 0 0 0 0 0
+                0 0 0 0 0 0 0 0 0 0 0 F 1 1 1 1 F 0 0 0 0 0 0 0
+                0 0 0 0 0 0 0 0 0 0 0 F 1 1 1 1 F 0 0 0 0 0 0 0
+                0 0 0 0 0 0 0 0 0 0 0 F 1 1 1 1 F 0 0 0 0 0 0 0
+                0 0 0 0 0 0 0 0 0 0 0 F 2 2 2 2 F 0 0 0 0 0 0 0
+                0 0 0 0 0 0 0 0 0 0 0 0 F 2 2 F 0 0 0 0 0 0 0 0
+                0 0 0 0 0 0 0 0 0 0 0 0 0 F F 0 0 0 0 0 0 0 0 0
+            `, img`
+                0 0 0 0 0 0 0 0 0 0 0 0 F F F F F F F 0 0 0 0 0
+                0 0 0 0 0 0 0 0 0 0 0 F F 2 1 1 1 F F F 0 0 0 0
+                0 0 0 0 0 0 0 0 0 0 F F 2 2 2 1 1 1 F F F 0 0 0
+                0 0 0 0 0 0 0 0 0 F F 2 2 2 2 1 1 1 1 F F F 0 0
+                0 0 0 0 0 0 0 0 0 F 1 1 2 2 2 1 1 1 1 1 F F F 0
+                0 0 0 0 0 0 0 0 0 F 1 1 1 2 F 1 1 1 2 2 2 F 0 0
+                0 0 0 0 0 0 0 0 0 F 1 1 F F F F 2 2 2 2 2 F 0 0
+                0 0 0 0 0 0 0 0 F F F F F 0 0 F 2 2 2 2 2 F 0 0
+                0 0 0 0 0 0 0 0 0 0 0 0 0 0 F F 2 2 2 2 2 F 0 0
+                0 0 0 0 0 0 0 0 0 0 0 0 0 F F 1 1 1 2 2 F F 0 0
+                0 0 0 0 0 0 0 0 0 0 0 0 F F 2 1 1 1 1 F F F 0 0
+                0 0 0 0 0 0 0 0 0 0 0 F F 2 2 2 1 1 F F F 0 0 0
+                0 0 0 0 0 0 0 0 0 0 F F 2 2 2 2 2 F F F 0 0 0 0
+                0 0 0 0 0 0 0 0 0 F F 1 2 2 2 2 F F F 0 0 0 0 0
+                0 0 0 0 0 0 0 0 F F 1 1 1 2 2 F F F 0 0 0 0 0 0
+                0 0 0 0 0 0 0 F F 2 2 1 1 1 F F F 0 0 0 0 0 0 0
+                0 0 0 0 0 0 F F 2 2 2 2 1 F F F 0 0 0 0 0 0 0 0
+                0 0 0 0 0 F F 1 1 2 2 2 F F F 0 0 0 0 0 0 0 0 0
+                0 0 0 0 F F 1 1 1 1 2 F F F 0 0 0 0 0 0 0 0 0 0
+                0 0 0 0 F 2 2 1 1 1 F F F 0 0 0 0 0 0 0 0 0 0 0
+                0 0 0 0 F F 2 2 1 F F F 0 0 0 0 0 0 0 0 0 0 0 0
+                0 0 0 0 F F 2 2 F F F 0 0 0 0 0 0 0 0 0 0 0 0 0
+                0 0 0 0 0 F F F F F 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+                0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+            `, img`
+                0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+                0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+                0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+                0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+                0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 F F F F F F 0 0 0
+                0 0 0 0 0 0 0 0 0 0 0 0 0 0 F 1 1 2 2 2 2 F 0 0
+                0 0 0 0 0 0 0 0 0 0 0 0 0 F 1 1 1 2 2 2 2 1 F 0
+                0 0 0 0 0 0 0 0 0 0 0 0 0 0 F 1 1 2 2 2 1 1 1 F
+                0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 F F F 2 2 1 1 1 F
+                0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 F 1 1 1 1 F
+                0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 F 1 1 1 1 F
+                0 0 F F F F F F F F F F F F F F F F 2 2 2 1 1 F
+                0 F 2 1 1 1 2 2 2 1 1 2 2 2 2 1 1 2 2 2 2 2 2 F
+                F 2 2 1 1 1 2 2 2 1 1 2 2 2 2 1 1 1 2 2 2 2 2 F
+                F 2 2 1 1 1 2 2 2 1 1 2 2 2 2 1 1 1 2 2 2 2 F 0
+                0 F 2 1 1 1 2 2 2 1 1 2 2 2 2 1 1 1 1 2 2 F 0 0
+                0 0 F F F F F F F F F F F F F F F F F F F 0 0 0
+                0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+                0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+                0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+                0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+                0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+                0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+                0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+            `, img`
+                0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+                0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+                0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+                0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+                0 0 F F F F 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+                0 F F F 2 F F F 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+                0 F F 2 2 1 F F F 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+                0 0 F 2 1 1 1 F F F 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+                0 0 F 1 1 1 1 2 2 F F 0 0 0 0 0 0 F 0 0 0 0 0 0
+                0 0 F F 1 1 2 2 2 2 F F 0 0 0 0 F F F F F 0 0 0
+                0 0 0 F F 2 2 2 2 2 1 F F 0 0 0 F 1 1 1 F F 0 0
+                0 0 0 0 F F 2 2 2 1 1 2 F F 0 0 F F 1 1 2 F F 0
+                0 0 0 0 0 F F 2 1 1 2 2 2 F F 0 0 F 1 2 2 2 F F
+                0 0 0 0 0 0 F F 1 2 2 2 2 2 F F 0 F F 2 2 2 2 F
+                0 0 0 0 0 0 0 F F 2 2 2 2 2 1 F F 0 F 2 2 2 1 F
+                0 0 0 0 0 0 0 0 F F 2 2 2 1 1 1 F F F 1 1 1 1 F
+                0 0 0 0 0 0 0 0 0 F F 2 1 1 1 2 2 2 1 1 1 1 1 F
+                0 0 0 0 0 0 0 0 0 0 F F 1 1 1 2 2 2 2 1 1 1 F F
+                0 0 0 0 0 0 0 0 0 0 0 F F 1 1 2 2 2 2 1 1 F F F
+                0 0 0 0 0 0 0 0 0 0 0 0 F F 2 2 2 2 2 2 F F F 0
+                0 0 0 0 0 0 0 0 0 0 0 0 0 F F 2 2 2 2 F F F 0 0
+                0 0 0 0 0 0 0 0 0 0 0 0 0 0 F F F F F F F 0 0 0
+                0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 F 0 0 0 0
+                0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+            `, img`
+                0 0 0 0 0 0 0 0 0 F F 0 0 0 0 0 0 0 0 0 0 0 0 0
+                0 0 0 0 0 0 0 0 F 2 2 F 0 0 0 0 0 0 0 0 0 0 0 0
+                0 0 0 0 0 0 0 F 2 2 2 2 F 0 0 0 0 0 0 0 0 0 0 0
+                0 0 0 0 0 0 0 F 1 1 1 1 F 0 0 0 0 0 0 0 0 0 0 0
+                0 0 0 0 0 0 0 F 1 1 1 1 F 0 0 0 0 0 0 0 0 0 0 0
+                0 0 0 0 0 0 0 F 1 1 1 1 F 0 0 0 0 0 0 0 0 0 0 0
+                0 0 0 0 0 0 0 F 2 2 2 2 F 0 0 0 0 0 0 0 0 0 0 0
+                0 0 0 0 0 0 0 F 2 2 2 2 F 0 0 0 0 0 0 0 0 0 0 0
+                0 0 0 0 0 0 0 F 2 2 2 2 F 0 0 0 0 0 0 0 0 0 0 0
+                0 0 0 0 0 0 0 F 1 1 1 1 F 0 0 0 0 0 0 0 0 0 0 0
+                0 0 0 0 0 0 0 F 1 1 1 1 F 0 0 0 0 0 0 0 0 0 0 0
+                0 0 0 0 0 0 0 F 2 2 2 2 F 0 0 0 0 0 0 0 0 0 0 0
+                0 0 0 0 0 0 0 F 2 2 2 2 F 0 0 0 0 0 0 0 0 0 0 0
+                0 0 0 0 0 0 0 F 2 2 2 2 F 0 0 0 0 F 0 0 0 0 0 0
+                0 0 0 0 0 0 0 F 2 2 2 2 F 0 0 0 F 1 F 0 0 0 0 0
+                0 0 0 0 0 0 0 F 1 1 1 1 F 0 0 F 1 1 1 F 0 0 0 0
+                0 0 0 0 0 0 0 F 1 1 1 1 F 0 0 F 1 1 1 F 0 0 0 0
+                0 0 0 0 0 0 0 F 1 1 1 2 F 0 0 F 2 2 2 F 0 0 0 0
+                0 0 0 0 0 0 0 F 1 2 2 2 2 F F 2 2 2 2 F 0 0 0 0
+                0 0 0 0 0 0 0 F 2 2 2 2 2 1 1 2 2 2 2 F 0 0 0 0
+                0 0 0 0 0 0 0 F 2 2 2 2 2 1 1 1 1 2 2 F 0 0 0 0
+                0 0 0 0 0 0 0 0 F 2 2 2 1 1 1 1 1 1 F 0 0 0 0 0
+                0 0 0 0 0 0 0 0 0 F 2 2 1 1 1 1 1 F 0 0 0 0 0 0
+                0 0 0 0 0 0 0 0 0 0 F F F F F F F 0 0 0 0 0 0 0
+            `, img`
+                0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+                0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 F F 0 0 0 0 0
+                0 0 0 0 0 0 0 0 0 0 0 0 0 0 F F F F F F 0 0 0 0
+                0 0 0 0 0 0 0 0 0 0 0 0 0 F F 1 2 2 2 F 0 0 0 0
+                0 0 0 0 0 0 0 0 0 0 0 0 F F 1 1 1 2 2 F 0 0 0 0
+                0 0 0 0 0 0 0 0 0 0 0 F F 2 1 1 1 1 F F 0 0 0 0
+                0 0 0 0 0 0 0 0 0 0 F F 2 2 2 1 1 1 F F 0 0 0 0
+                0 0 0 0 0 0 0 0 0 F F 1 2 2 2 2 1 F F 0 0 0 0 0
+                0 0 0 0 0 0 0 0 F F 1 1 1 2 2 2 F F 0 0 0 0 0 0
+                0 0 0 0 0 0 0 F F 2 2 1 1 1 2 F F 0 0 0 0 0 0 0
+                0 0 0 0 0 0 F F 2 2 2 2 1 1 F F 0 0 0 0 0 0 0 0
+                0 0 0 0 0 F F 2 2 2 2 2 2 F F 0 0 0 0 0 0 0 0 0
+                0 0 0 0 F F 1 1 2 2 2 2 F F 0 0 0 0 0 0 0 0 0 0
+                0 0 0 F F 1 1 1 1 2 2 F F 0 0 0 0 0 0 0 0 0 0 0
+                0 0 F F 2 1 1 1 1 1 F F 0 0 0 0 0 0 0 0 0 0 0 0
+                0 0 F F 2 2 2 2 1 F F 0 0 0 0 0 0 0 0 0 0 0 0 0
+                0 0 F 2 2 2 2 2 F F 0 0 F F F F 0 0 0 0 0 0 0 0
+                0 0 F 2 2 2 2 2 F F F F F 1 1 F 0 0 0 0 0 0 0 0
+                0 0 F 2 2 2 2 1 1 F F 1 1 1 1 F 0 0 0 0 0 0 0 0
+                0 0 F F 2 1 1 1 1 2 2 2 1 1 F F 0 0 0 0 0 0 0 0
+                0 0 F F F 1 1 1 1 2 2 2 2 1 F 0 0 0 0 0 0 0 0 0
+                0 0 0 F F F 1 1 1 1 2 2 2 F F 0 0 0 0 0 0 0 0 0
+                0 0 0 0 F F F 1 1 1 2 2 F F 0 0 0 0 0 0 0 0 0 0
+                0 0 0 0 0 F F F F F F F F 0 0 0 0 0 0 0 0 0 0 0
+            `, img`
+                0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+                0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+                0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+                0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+                0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+                0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+                0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+                0 0 0 F F F F F F F F F F F F F F F F F F F 0 0
+                0 0 F 2 2 1 1 1 1 2 2 2 2 1 1 2 2 2 1 1 1 2 F 0
+                0 F 2 2 2 2 1 1 1 2 2 2 2 1 1 2 2 2 1 1 1 2 2 F
+                F 2 2 2 2 2 1 1 1 2 2 2 2 1 1 2 2 2 1 1 1 2 2 F
+                F 2 2 2 2 2 2 1 1 2 2 2 2 1 1 2 2 2 1 1 1 2 F 0
+                F 1 1 2 2 2 F F F F F F F F F F F F F F F F 0 0
+                F 1 1 1 1 F 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+                F 1 1 1 1 F 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+                F 1 1 1 2 2 F F F 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+                F 1 1 1 2 2 2 1 1 F 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+                0 F 1 2 2 2 2 1 1 1 F 0 0 0 0 0 0 0 0 0 0 0 0 0
+                0 0 F 2 2 2 2 1 1 F 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+                0 0 0 F F F F F F 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+                0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+                0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+                0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+                0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+            `, img`
+                0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+                0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+                0 0 0 0 F F F F F F 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+                0 0 0 F F F 2 2 2 F F 0 0 0 0 0 0 0 0 0 0 0 0 0
+                0 0 F F 2 2 2 2 2 2 F F 0 0 0 0 0 0 0 0 0 0 0 0
+                0 F F 1 1 2 2 2 2 2 1 F F 0 0 0 0 0 0 0 0 0 0 0
+                F F 1 1 1 1 2 2 2 1 1 1 F F 0 0 0 0 0 0 0 0 0 0
+                F 1 1 1 1 1 2 2 2 1 1 1 1 F F 0 0 0 0 0 0 0 0 0
+                F 1 1 1 1 1 F F 2 1 1 1 2 2 F F 0 0 0 0 0 0 0 0
+                F 1 1 2 2 F F F F 1 1 2 2 2 2 F F 0 0 0 0 0 0 0
+                F 2 2 2 2 F F 0 F F 2 2 2 2 2 1 F F 0 0 0 0 0 0
+                F F 2 2 2 2 F F 0 F F 2 2 2 1 1 1 F F 0 0 0 0 0
+                0 F F 2 2 1 1 F 0 0 F F 2 1 1 1 2 2 F F 0 0 0 0
+                0 0 F F 1 1 1 F 0 0 0 F F 1 1 2 2 2 2 F F 0 0 0
+                0 0 0 F F 1 1 F 0 0 0 0 F F 2 2 2 2 1 1 F F 0 0
+                0 0 0 0 F F F F 0 0 0 0 0 F F 2 2 1 1 1 1 F F 0
+                0 0 0 0 0 0 0 0 0 0 0 0 0 0 F F F 1 1 1 1 2 F 0
+                0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 F F F 1 1 2 2 F 0
+                0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 F F F 2 2 F F 0
+                0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 F F F F F 0 0
+                0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+                0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+                0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+                0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+            `
+        ];
+    }
+
     //% fixedInstance whenUsed block="candy cane"
     export const candyCanes = new effects.ScreenEffect(15, 35, 0, function (anchor: particles.ParticleAnchor, particlesPerSecond: number) {
-        const factory = new SnowBallFactory(
+        const factory = new ScaledShapeFactory(
             100, // particle speed
             45, // arc center degrees
             92, // arc degrees
-            [
-                img`
-0 0 0 0 0 0 0 F F F F F F F 0 0 0 0 0 0 0 0 0 0
-0 0 0 0 0 0 F 1 1 1 1 1 2 2 F 0 0 0 0 0 0 0 0 0
-0 0 0 0 0 F 1 1 1 1 1 1 2 2 2 F 0 0 0 0 0 0 0 0
-0 0 0 0 F 2 2 1 1 1 1 2 2 2 2 2 F 0 0 0 0 0 0 0
-0 0 0 0 F 2 2 2 2 1 1 2 2 2 2 2 F 0 0 0 0 0 0 0
-0 0 0 0 F 2 2 2 2 F F 2 2 2 2 1 F 0 0 0 0 0 0 0
-0 0 0 0 F 2 2 2 F 0 0 F 2 1 1 1 F 0 0 0 0 0 0 0
-0 0 0 0 F 1 1 1 F 0 0 F 1 1 1 1 F 0 0 0 0 0 0 0
-0 0 0 0 F 1 1 1 F 0 0 F 1 1 1 1 F 0 0 0 0 0 0 0
-0 0 0 0 0 F 1 F 0 0 0 F 2 2 2 2 F 0 0 0 0 0 0 0
-0 0 0 0 0 0 F 0 0 0 0 F 2 2 2 2 F 0 0 0 0 0 0 0
-0 0 0 0 0 0 0 0 0 0 0 F 2 2 2 2 F 0 0 0 0 0 0 0
-0 0 0 0 0 0 0 0 0 0 0 F 2 2 2 2 F 0 0 0 0 0 0 0
-0 0 0 0 0 0 0 0 0 0 0 F 1 1 1 1 F 0 0 0 0 0 0 0
-0 0 0 0 0 0 0 0 0 0 0 F 1 1 1 1 F 0 0 0 0 0 0 0
-0 0 0 0 0 0 0 0 0 0 0 F 2 2 2 2 F 0 0 0 0 0 0 0
-0 0 0 0 0 0 0 0 0 0 0 F 2 2 2 2 F 0 0 0 0 0 0 0
-0 0 0 0 0 0 0 0 0 0 0 F 2 2 2 2 F 0 0 0 0 0 0 0
-0 0 0 0 0 0 0 0 0 0 0 F 1 1 1 1 F 0 0 0 0 0 0 0
-0 0 0 0 0 0 0 0 0 0 0 F 1 1 1 1 F 0 0 0 0 0 0 0
-0 0 0 0 0 0 0 0 0 0 0 F 1 1 1 1 F 0 0 0 0 0 0 0
-0 0 0 0 0 0 0 0 0 0 0 F 2 2 2 2 F 0 0 0 0 0 0 0
-0 0 0 0 0 0 0 0 0 0 0 0 F 2 2 F 0 0 0 0 0 0 0 0
-0 0 0 0 0 0 0 0 0 0 0 0 0 F F 0 0 0 0 0 0 0 0 0
-            `, img`
-            0 0 0 0 0 0 0 0 0 0 0 0 F F F F F F F 0 0 0 0 0
-            0 0 0 0 0 0 0 0 0 0 0 F F 2 1 1 1 F F F 0 0 0 0
-            0 0 0 0 0 0 0 0 0 0 F F 2 2 2 1 1 1 F F F 0 0 0
-            0 0 0 0 0 0 0 0 0 F F 2 2 2 2 1 1 1 1 F F F 0 0
-            0 0 0 0 0 0 0 0 0 F 1 1 2 2 2 1 1 1 1 1 F F F 0
-            0 0 0 0 0 0 0 0 0 F 1 1 1 2 F 1 1 1 2 2 2 F 0 0
-            0 0 0 0 0 0 0 0 0 F 1 1 F F F F 2 2 2 2 2 F 0 0
-            0 0 0 0 0 0 0 0 F F F F F 0 0 F 2 2 2 2 2 F 0 0
-            0 0 0 0 0 0 0 0 0 0 0 0 0 0 F F 2 2 2 2 2 F 0 0
-            0 0 0 0 0 0 0 0 0 0 0 0 0 F F 1 1 1 2 2 F F 0 0
-            0 0 0 0 0 0 0 0 0 0 0 0 F F 2 1 1 1 1 F F F 0 0
-            0 0 0 0 0 0 0 0 0 0 0 F F 2 2 2 1 1 F F F 0 0 0
-            0 0 0 0 0 0 0 0 0 0 F F 2 2 2 2 2 F F F 0 0 0 0
-            0 0 0 0 0 0 0 0 0 F F 1 2 2 2 2 F F F 0 0 0 0 0
-            0 0 0 0 0 0 0 0 F F 1 1 1 2 2 F F F 0 0 0 0 0 0
-            0 0 0 0 0 0 0 F F 2 2 1 1 1 F F F 0 0 0 0 0 0 0
-            0 0 0 0 0 0 F F 2 2 2 2 1 F F F 0 0 0 0 0 0 0 0
-            0 0 0 0 0 F F 1 1 2 2 2 F F F 0 0 0 0 0 0 0 0 0
-            0 0 0 0 F F 1 1 1 1 2 F F F 0 0 0 0 0 0 0 0 0 0
-            0 0 0 0 F 2 2 1 1 1 F F F 0 0 0 0 0 0 0 0 0 0 0
-            0 0 0 0 F F 2 2 1 F F F 0 0 0 0 0 0 0 0 0 0 0 0
-            0 0 0 0 F F 2 2 F F F 0 0 0 0 0 0 0 0 0 0 0 0 0
-            0 0 0 0 0 F F F F F 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-            0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-            `, img`
-            0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-            0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-            0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-            0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-            0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 F F F F F F 0 0 0
-            0 0 0 0 0 0 0 0 0 0 0 0 0 0 F 1 1 2 2 2 2 F 0 0
-            0 0 0 0 0 0 0 0 0 0 0 0 0 F 1 1 1 2 2 2 2 1 F 0
-            0 0 0 0 0 0 0 0 0 0 0 0 0 0 F 1 1 2 2 2 1 1 1 F
-            0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 F F F 2 2 1 1 1 F
-            0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 F 1 1 1 1 F
-            0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 F 1 1 1 1 F
-            0 0 F F F F F F F F F F F F F F F F 2 2 2 1 1 F
-            0 F 2 1 1 1 2 2 2 1 1 2 2 2 2 1 1 2 2 2 2 2 2 F
-            F 2 2 1 1 1 2 2 2 1 1 2 2 2 2 1 1 1 2 2 2 2 2 F
-            F 2 2 1 1 1 2 2 2 1 1 2 2 2 2 1 1 1 2 2 2 2 F 0
-            0 F 2 1 1 1 2 2 2 1 1 2 2 2 2 1 1 1 1 2 2 F 0 0
-            0 0 F F F F F F F F F F F F F F F F F F F 0 0 0
-            0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-            0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-            0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-            0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-            0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-            0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-            0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-            `, img`
-            0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-            0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-            0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-            0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-            0 0 F F F F 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-            0 F F F 2 F F F 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-            0 F F 2 2 1 F F F 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-            0 0 F 2 1 1 1 F F F 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-            0 0 F 1 1 1 1 2 2 F F 0 0 0 0 0 0 F 0 0 0 0 0 0
-            0 0 F F 1 1 2 2 2 2 F F 0 0 0 0 F F F F F 0 0 0
-            0 0 0 F F 2 2 2 2 2 1 F F 0 0 0 F 1 1 1 F F 0 0
-            0 0 0 0 F F 2 2 2 1 1 2 F F 0 0 F F 1 1 2 F F 0
-            0 0 0 0 0 F F 2 1 1 2 2 2 F F 0 0 F 1 2 2 2 F F
-            0 0 0 0 0 0 F F 1 2 2 2 2 2 F F 0 F F 2 2 2 2 F
-            0 0 0 0 0 0 0 F F 2 2 2 2 2 1 F F 0 F 2 2 2 1 F
-            0 0 0 0 0 0 0 0 F F 2 2 2 1 1 1 F F F 1 1 1 1 F
-            0 0 0 0 0 0 0 0 0 F F 2 1 1 1 2 2 2 1 1 1 1 1 F
-            0 0 0 0 0 0 0 0 0 0 F F 1 1 1 2 2 2 2 1 1 1 F F
-            0 0 0 0 0 0 0 0 0 0 0 F F 1 1 2 2 2 2 1 1 F F F
-            0 0 0 0 0 0 0 0 0 0 0 0 F F 2 2 2 2 2 2 F F F 0
-            0 0 0 0 0 0 0 0 0 0 0 0 0 F F 2 2 2 2 F F F 0 0
-            0 0 0 0 0 0 0 0 0 0 0 0 0 0 F F F F F F F 0 0 0
-            0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 F 0 0 0 0
-            0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-            `, img`
-            0 0 0 0 0 0 0 0 0 F F 0 0 0 0 0 0 0 0 0 0 0 0 0
-            0 0 0 0 0 0 0 0 F 2 2 F 0 0 0 0 0 0 0 0 0 0 0 0
-            0 0 0 0 0 0 0 F 2 2 2 2 F 0 0 0 0 0 0 0 0 0 0 0
-            0 0 0 0 0 0 0 F 1 1 1 1 F 0 0 0 0 0 0 0 0 0 0 0
-            0 0 0 0 0 0 0 F 1 1 1 1 F 0 0 0 0 0 0 0 0 0 0 0
-            0 0 0 0 0 0 0 F 1 1 1 1 F 0 0 0 0 0 0 0 0 0 0 0
-            0 0 0 0 0 0 0 F 2 2 2 2 F 0 0 0 0 0 0 0 0 0 0 0
-            0 0 0 0 0 0 0 F 2 2 2 2 F 0 0 0 0 0 0 0 0 0 0 0
-            0 0 0 0 0 0 0 F 2 2 2 2 F 0 0 0 0 0 0 0 0 0 0 0
-            0 0 0 0 0 0 0 F 1 1 1 1 F 0 0 0 0 0 0 0 0 0 0 0
-            0 0 0 0 0 0 0 F 1 1 1 1 F 0 0 0 0 0 0 0 0 0 0 0
-            0 0 0 0 0 0 0 F 2 2 2 2 F 0 0 0 0 0 0 0 0 0 0 0
-            0 0 0 0 0 0 0 F 2 2 2 2 F 0 0 0 0 0 0 0 0 0 0 0
-            0 0 0 0 0 0 0 F 2 2 2 2 F 0 0 0 0 F 0 0 0 0 0 0
-            0 0 0 0 0 0 0 F 2 2 2 2 F 0 0 0 F 1 F 0 0 0 0 0
-            0 0 0 0 0 0 0 F 1 1 1 1 F 0 0 F 1 1 1 F 0 0 0 0
-            0 0 0 0 0 0 0 F 1 1 1 1 F 0 0 F 1 1 1 F 0 0 0 0
-            0 0 0 0 0 0 0 F 1 1 1 2 F 0 0 F 2 2 2 F 0 0 0 0
-            0 0 0 0 0 0 0 F 1 2 2 2 2 F F 2 2 2 2 F 0 0 0 0
-            0 0 0 0 0 0 0 F 2 2 2 2 2 1 1 2 2 2 2 F 0 0 0 0
-            0 0 0 0 0 0 0 F 2 2 2 2 2 1 1 1 1 2 2 F 0 0 0 0
-            0 0 0 0 0 0 0 0 F 2 2 2 1 1 1 1 1 1 F 0 0 0 0 0
-            0 0 0 0 0 0 0 0 0 F 2 2 1 1 1 1 1 F 0 0 0 0 0 0
-            0 0 0 0 0 0 0 0 0 0 F F F F F F F 0 0 0 0 0 0 0
-            `, img`
-            0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-            0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 F F 0 0 0 0 0
-            0 0 0 0 0 0 0 0 0 0 0 0 0 0 F F F F F F 0 0 0 0
-            0 0 0 0 0 0 0 0 0 0 0 0 0 F F 1 2 2 2 F 0 0 0 0
-            0 0 0 0 0 0 0 0 0 0 0 0 F F 1 1 1 2 2 F 0 0 0 0
-            0 0 0 0 0 0 0 0 0 0 0 F F 2 1 1 1 1 F F 0 0 0 0
-            0 0 0 0 0 0 0 0 0 0 F F 2 2 2 1 1 1 F F 0 0 0 0
-            0 0 0 0 0 0 0 0 0 F F 1 2 2 2 2 1 F F 0 0 0 0 0
-            0 0 0 0 0 0 0 0 F F 1 1 1 2 2 2 F F 0 0 0 0 0 0
-            0 0 0 0 0 0 0 F F 2 2 1 1 1 2 F F 0 0 0 0 0 0 0
-            0 0 0 0 0 0 F F 2 2 2 2 1 1 F F 0 0 0 0 0 0 0 0
-            0 0 0 0 0 F F 2 2 2 2 2 2 F F 0 0 0 0 0 0 0 0 0
-            0 0 0 0 F F 1 1 2 2 2 2 F F 0 0 0 0 0 0 0 0 0 0
-            0 0 0 F F 1 1 1 1 2 2 F F 0 0 0 0 0 0 0 0 0 0 0
-            0 0 F F 2 1 1 1 1 1 F F 0 0 0 0 0 0 0 0 0 0 0 0
-            0 0 F F 2 2 2 2 1 F F 0 0 0 0 0 0 0 0 0 0 0 0 0
-            0 0 F 2 2 2 2 2 F F 0 0 F F F F 0 0 0 0 0 0 0 0
-            0 0 F 2 2 2 2 2 F F F F F 1 1 F 0 0 0 0 0 0 0 0
-            0 0 F 2 2 2 2 1 1 F F 1 1 1 1 F 0 0 0 0 0 0 0 0
-            0 0 F F 2 1 1 1 1 2 2 2 1 1 F F 0 0 0 0 0 0 0 0
-            0 0 F F F 1 1 1 1 2 2 2 2 1 F 0 0 0 0 0 0 0 0 0
-            0 0 0 F F F 1 1 1 1 2 2 2 F F 0 0 0 0 0 0 0 0 0
-            0 0 0 0 F F F 1 1 1 2 2 F F 0 0 0 0 0 0 0 0 0 0
-            0 0 0 0 0 F F F F F F F F 0 0 0 0 0 0 0 0 0 0 0
-            `, img`
-            0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-            0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-            0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-            0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-            0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-            0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-            0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-            0 0 0 F F F F F F F F F F F F F F F F F F F 0 0
-            0 0 F 2 2 1 1 1 1 2 2 2 2 1 1 2 2 2 1 1 1 2 F 0
-            0 F 2 2 2 2 1 1 1 2 2 2 2 1 1 2 2 2 1 1 1 2 2 F
-            F 2 2 2 2 2 1 1 1 2 2 2 2 1 1 2 2 2 1 1 1 2 2 F
-            F 2 2 2 2 2 2 1 1 2 2 2 2 1 1 2 2 2 1 1 1 2 F 0
-            F 1 1 2 2 2 F F F F F F F F F F F F F F F F 0 0
-            F 1 1 1 1 F 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-            F 1 1 1 1 F 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-            F 1 1 1 2 2 F F F 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-            F 1 1 1 2 2 2 1 1 F 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-            0 F 1 2 2 2 2 1 1 1 F 0 0 0 0 0 0 0 0 0 0 0 0 0
-            0 0 F 2 2 2 2 1 1 F 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-            0 0 0 F F F F F F 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-            0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-            0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-            0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-            0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-            `, img`
-            0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-            0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-            0 0 0 0 F F F F F F 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-            0 0 0 F F F 2 2 2 F F 0 0 0 0 0 0 0 0 0 0 0 0 0
-            0 0 F F 2 2 2 2 2 2 F F 0 0 0 0 0 0 0 0 0 0 0 0
-            0 F F 1 1 2 2 2 2 2 1 F F 0 0 0 0 0 0 0 0 0 0 0
-            F F 1 1 1 1 2 2 2 1 1 1 F F 0 0 0 0 0 0 0 0 0 0
-            F 1 1 1 1 1 2 2 2 1 1 1 1 F F 0 0 0 0 0 0 0 0 0
-            F 1 1 1 1 1 F F 2 1 1 1 2 2 F F 0 0 0 0 0 0 0 0
-            F 1 1 2 2 F F F F 1 1 2 2 2 2 F F 0 0 0 0 0 0 0
-            F 2 2 2 2 F F 0 F F 2 2 2 2 2 1 F F 0 0 0 0 0 0
-            F F 2 2 2 2 F F 0 F F 2 2 2 1 1 1 F F 0 0 0 0 0
-            0 F F 2 2 1 1 F 0 0 F F 2 1 1 1 2 2 F F 0 0 0 0
-            0 0 F F 1 1 1 F 0 0 0 F F 1 1 2 2 2 2 F F 0 0 0
-            0 0 0 F F 1 1 F 0 0 0 0 F F 2 2 2 2 1 1 F F 0 0
-            0 0 0 0 F F F F 0 0 0 0 0 F F 2 2 1 1 1 1 F F 0
-            0 0 0 0 0 0 0 0 0 0 0 0 0 0 F F F 1 1 1 1 2 F 0
-            0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 F F F 1 1 2 2 F 0
-            0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 F F F 2 2 F F 0
-            0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 F F F F F 0 0
-            0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-            0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-            0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-            0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-            `]
+            candyCaneShapes()
         );
 
         factory.minPercent = 15;
@@ -343,36 +357,9 @@ namespace wintereffects {
         return src;
     });
 
-    //% fixedInstance whenUsed block="holiday cookies"
-    export const holidayCookies = new effects.ScreenEffect(15, 70, 0, function (anchor: particles.ParticleAnchor, particlesPerSecond: number) {
-        class HolidayCookieFactory extends SnowBallFactory {
-            constructor(particleSpeed: number, arcCenter: number, arcDegrees: number, sources: Image[]) {
-                super(
-                    particleSpeed,
-                    arcCenter,
-                    arcDegrees,
-                    sources
-                );
-                this.minPercent = 1;
-                this.maxPercent = 40;
-            }
-            createParticle(anchor: particles.ParticleAnchor) {
-                const p = super.createParticle(anchor);
-                p._y = Fx8(anchor.y - (anchor.height >> 1));
-                p._x = Fx8(this.galois.randomRange(anchor.x - (anchor.width >> 1), anchor.x + (anchor.width >> 1)));
-                return p;
-            }
-            drawParticle(p: particles.Particle, x: Fx8, y: Fx8) {
-                p.data += .07;
-                super.drawParticle(p, x, y);
-            }
-        }
-
-        const factory = new HolidayCookieFactory(
-            135, // particle speed
-            0, // arc center degrees
-            35, // arc degrees
-            [img`
+    function cookieShapes() {
+        return [
+            img`
                 . . . . . f f f f f f . . . . .
                 . . . f f b b b 7 b b f f . . .
                 . . f b b b b b b b b b b f . .
@@ -492,30 +479,96 @@ namespace wintereffects {
                 . . . f f 7 7 7 7 7 7 f f . . .
                 . . . . . f f f f f f . . . . .
             `,
-            ]
-        );
-        const src = new particles.ParticleSource(anchor, particlesPerSecond, factory);
-        return src;
-    });
+        ];
+    }
 
-    //% fixedInstance whenUsed block="snowflakes"
-    export const snowflakes = new effects.ScreenEffect(15, 80, 0, function (anchor: particles.ParticleAnchor, particlesPerSecond: number) {
-        class SnowFlakeFactory extends SnowBallFactory {
-            constructor(particleSpeed: number, arcCenter: number, arcDegrees: number, sources: Image[]) {
-                super(
-                    particleSpeed,
-                    arcCenter,
-                    arcDegrees,
-                    sources
-                );
-                this.minPercent = 50;
-                this.maxPercent = 200;
-            }
+    //% fixedInstance whenUsed block="holiday cookies"
+    export const holidayCookies = new effects.ScreenEffect(15, 70, 0, function (anchor: particles.ParticleAnchor, particlesPerSecond: number) {
+        class HolidayCookieFactory extends ScaledShapeFactory {
             createParticle(anchor: particles.ParticleAnchor) {
                 const p = super.createParticle(anchor);
                 p._y = Fx8(anchor.y - (anchor.height >> 1));
                 p._x = Fx8(this.galois.randomRange(anchor.x - (anchor.width >> 1), anchor.x + (anchor.width >> 1)));
-                p.lifespan = 5000;
+                return p;
+            }
+        }
+
+        const factory = new HolidayCookieFactory(
+            135, // particle speed
+            0, // arc center degrees
+            35, // arc degrees
+            cookieShapes()
+        );
+        factory.minPercent = 1;
+        factory.maxPercent = 40;
+        factory.growthRate = 0.07;
+        const src = new particles.ParticleSource(anchor, particlesPerSecond, factory);
+        return src;
+    });
+
+    function snowflakeShapes() {
+        return [
+            img`1`,
+            img`9`,
+            img`
+                9 1
+                1 .
+            `,
+            img`
+                . . 1
+                . 1 9
+                1 9 1
+            `, img`
+                . 1
+                1 9
+            `,
+            img`
+                1 . .
+                9 1 .
+                1 9 1
+            `,
+            img`
+                1 9 1
+                9 1 .
+                1 . .
+            `,
+            img`
+                1 9 1
+                . 1 9
+                . . 1
+            `,
+            img`1 9`,
+            img`9 1`,
+            img`1 1`,
+            img`
+                9 9
+            `,
+            img`
+                1
+                9
+            `,
+            img`
+                9
+                1
+            `,
+            img`
+                9 .
+                . 1
+            `,
+            img`
+                . 1
+                9 .
+            `,
+        ];
+    }
+
+    //% fixedInstance whenUsed block="snowflakes"
+    export const snowflakes = new effects.ScreenEffect(15, 80, 0, function (anchor: particles.ParticleAnchor, particlesPerSecond: number) {
+        class SnowFlakeFactory extends ScaledShapeFactory {
+            createParticle(anchor: particles.ParticleAnchor) {
+                const p = super.createParticle(anchor);
+                p._y = Fx8(anchor.y - (anchor.height >> 1));
+                p._x = Fx8(this.galois.randomRange(anchor.x - (anchor.width >> 1), anchor.x + (anchor.width >> 1)));
                 return p;
             }
             drawParticle(p: particles.Particle, x: Fx8, y: Fx8) {
@@ -532,52 +585,11 @@ namespace wintereffects {
             30, // particle speed
             0, // arc center degrees
             35, // arc degrees
-            [
-                img`1`,
-                img`
-                    9
-                `,
-                img`
-                    9 1
-                    1 .
-                `,
-                img`
-                    . . 1
-                    . 1 9
-                    1 9 1
-                `, img`
-                    . 1
-                    1 9
-                `,
-                img`
-                    1 . .
-                    9 1 .
-                    1 9 1
-                `,
-                img`
-                    1 9 1
-                    9 1 .
-                    1 . .
-                `,
-                img`
-                    1 9 1
-                    . 1 9
-                    . . 1
-                `,
-                img`1 9`,
-                img`9 1`,
-                img`1 1`,
-                img`9 9`,
-                img`1
-                9`,
-                img`9
-                1`,
-                img`9 .
-                . 1`,
-                img`. 1
-                9 .`,
-            ]
+            snowflakeShapes()
         );
+        factory.minPercent = 50;
+        factory.maxPercent = 200;
+        factory.lifespan = 5000;
         const src = new particles.ParticleSource(anchor, particlesPerSecond, factory);
         return src;
     });
