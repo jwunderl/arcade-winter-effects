@@ -808,7 +808,7 @@ namespace wintereffects {
             if (maxScalePercent != undefined) {
                 factory.maxPercent = maxScalePercent;
             }
-            factory.growthRate = growthRate;
+            factory.growthRate = growthRate / 100;
             // todo: Expose these or no?
             // would need to note that they're mutually exclusive due to implementation details~
             // factory.rotateImagesRate = .25;
