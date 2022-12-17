@@ -757,6 +757,9 @@ namespace wintereffects {
                     factory.rotateImagesRate = .25;
                     break;
                 case WinteryShapes.HolidayCookies:
+                    factory.minPercent = 1;
+                    factory.maxPercent = 40;
+                    factory.growthRate = 0.07;
                     break;
                 case WinteryShapes.Snowflakes:
                     factory.randomlySwitchDirectionsRate = 0.01;
@@ -764,9 +767,6 @@ namespace wintereffects {
                     factory.maxPercent = 200;
                     break;
                 case WinteryShapes.Snowballs:
-                    factory.minPercent = 1;
-                    factory.maxPercent = 40;
-                    factory.growthRate = 0.07;
                 default:
                     break;
             }
