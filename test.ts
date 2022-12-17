@@ -14,6 +14,7 @@ controller.left.onEvent(ControllerButtonEvent.Pressed, () => setCurrentEffect(wi
 
 controller.right.onEvent(ControllerButtonEvent.Pressed, () => setCurrentEffect(wintereffects.candyCanes));
 
+
 game.onUpdateInterval(4000, () => {
     if (currentEffect) {
         currentEffect.startScreenEffect(1500)
