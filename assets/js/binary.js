@@ -1,4 +1,4 @@
-// meta={"simUrl":"https://trg-arcade.userpxt.io/v1.11.37/---simulator","cdnUrl":"https://pxt.azureedge.net","version":"0.0.2","target":"arcade","targetVersion":"1.11.37","repo":"jwunderl/arcade-winter-effects"}
+// meta={"simUrl":"https://trg-arcade.userpxt.io/v1.11.37/---simulator","cdnUrl":"https://pxt.azureedge.net","version":"0.0.3","target":"arcade","targetVersion":"1.11.37","repo":"jwunderl/arcade-winter-effects"}
 // total=1324052 new=11.10% cached=83.51% other=5.39%
 (function (ectx) {
 'use strict';
@@ -420,7 +420,7 @@ const pxsim_pxtrt = pxsim.pxtrt;
 const pxsim_numops = pxsim.numops;
 
 
-function _main___P586606(s) {
+function _main___P587563(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -770,7 +770,7 @@ switch (step) {
     s.callLocIdx = 50; s.pc = 30; return s.tmp_0;
   case 30:
     r0 = s.retval;
-    globals.currentEffect___566956 = (globals.snowball___585714);
+    globals.currentEffect___566956 = (globals.snowball___586671);
     globals.setCurrentEffect___566957 = (setCurrentEffect_inline__P569442);
     s.tmp_0 = controller_Button_onEvent__P564824_mk(s);
     s.tmp_0.arg0 = globals.A___564742;
@@ -813,11 +813,11 @@ switch (step) {
     s.tmp_1.arg1 = 15;
     s.tmp_1.arg2 = 250;
     s.tmp_1.arg3 = 0;
-    s.tmp_1.arg4 = snowball_inline__P586287;
+    s.tmp_1.arg4 = snowball_inline__P587244;
     s.callLocIdx = 139; s.pc = 36; return s.tmp_1;
   case 36:
     r0 = s.retval;
-    globals.snowball___585714 = (s.tmp_0);
+    globals.snowball___586671 = (s.tmp_0);
     r0 = pxsim_pxtcore_mkClassInstance(effects_ScreenEffect__C565839_VT);
     s.tmp_0 = r0;
     s.tmp_1 = effects_ScreenEffect_constructor__P565840_mk(s);
@@ -825,11 +825,11 @@ switch (step) {
     s.tmp_1.arg1 = 15;
     s.tmp_1.arg2 = 35;
     s.tmp_1.arg3 = 0;
-    s.tmp_1.arg4 = candyCanes_inline__P586321;
+    s.tmp_1.arg4 = candyCanes_inline__P587278;
     s.callLocIdx = 143; s.pc = 37; return s.tmp_1;
   case 37:
     r0 = s.retval;
-    globals.candyCanes___585721 = (s.tmp_0);
+    globals.candyCanes___586678 = (s.tmp_0);
     r0 = pxsim_pxtcore_mkClassInstance(effects_ScreenEffect__C565839_VT);
     s.tmp_0 = r0;
     s.tmp_1 = effects_ScreenEffect_constructor__P565840_mk(s);
@@ -837,11 +837,11 @@ switch (step) {
     s.tmp_1.arg1 = 15;
     s.tmp_1.arg2 = 70;
     s.tmp_1.arg3 = 0;
-    s.tmp_1.arg4 = holidayCookies_inline__P586359;
+    s.tmp_1.arg4 = holidayCookies_inline__P587316;
     s.callLocIdx = 147; s.pc = 38; return s.tmp_1;
   case 38:
     r0 = s.retval;
-    globals.holidayCookies___585717 = (s.tmp_0);
+    globals.holidayCookies___586674 = (s.tmp_0);
     r0 = pxsim_pxtcore_mkClassInstance(effects_ScreenEffect__C565839_VT);
     s.tmp_0 = r0;
     s.tmp_1 = effects_ScreenEffect_constructor__P565840_mk(s);
@@ -849,22 +849,22 @@ switch (step) {
     s.tmp_1.arg1 = 15;
     s.tmp_1.arg2 = 80;
     s.tmp_1.arg3 = 0;
-    s.tmp_1.arg4 = snowflakes_inline__P586415;
+    s.tmp_1.arg4 = snowflakes_inline__P587372;
     s.callLocIdx = 151; s.pc = 39; return s.tmp_1;
   case 39:
     r0 = s.retval;
-    globals.snowflakes___585719 = (s.tmp_0);
+    globals.snowflakes___586676 = (s.tmp_0);
     r0 = undefined;
     return leave(s, r0)
   default: oops()
 } } }
-_main___P586606.info = {"start":0,"length":0,"line":0,"column":0,"endLine":0,"endColumn":0,"fileName":"main.ts","functionName":"<main>","argumentNames":[]}
-_main___P586606.continuations = [  ]
+_main___P587563.info = {"start":0,"length":0,"line":0,"column":0,"endLine":0,"endColumn":0,"fileName":"main.ts","functionName":"<main>","argumentNames":[]}
+_main___P587563.continuations = [  ]
 
-function _main___P586606_mk(s) {
+function _main___P587563_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: _main___P586606, depth: s.depth + 1,
+        parent: s, fn: _main___P587563, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -1206,7 +1206,7 @@ switch (step) {
 
     s.tmp_0 = lambda_2_mk(s);
     s.tmp_0.argL = globals.setCurrentEffect___566957;
-    s.tmp_0.arg0 = globals.snowball___585714;
+    s.tmp_0.arg0 = globals.snowball___586671;
     setupLambda(s.tmp_0, s.tmp_0.argL);
     s.callLocIdx = 52; s.pc = 1; return s.tmp_0;
   case 1:
@@ -1241,7 +1241,7 @@ switch (step) {
 
     s.tmp_0 = lambda_2_mk(s);
     s.tmp_0.argL = globals.setCurrentEffect___566957;
-    s.tmp_0.arg0 = globals.holidayCookies___585717;
+    s.tmp_0.arg0 = globals.holidayCookies___586674;
     setupLambda(s.tmp_0, s.tmp_0.argL);
     s.callLocIdx = 54; s.pc = 1; return s.tmp_0;
   case 1:
@@ -1276,7 +1276,7 @@ switch (step) {
 
     s.tmp_0 = lambda_2_mk(s);
     s.tmp_0.argL = globals.setCurrentEffect___566957;
-    s.tmp_0.arg0 = globals.snowflakes___585719;
+    s.tmp_0.arg0 = globals.snowflakes___586676;
     setupLambda(s.tmp_0, s.tmp_0.argL);
     s.callLocIdx = 56; s.pc = 1; return s.tmp_0;
   case 1:
@@ -1311,7 +1311,7 @@ switch (step) {
 
     s.tmp_0 = lambda_2_mk(s);
     s.tmp_0.argL = globals.setCurrentEffect___566957;
-    s.tmp_0.arg0 = globals.candyCanes___585721;
+    s.tmp_0.arg0 = globals.candyCanes___586678;
     setupLambda(s.tmp_0, s.tmp_0.argL);
     s.callLocIdx = 58; s.pc = 1; return s.tmp_0;
   case 1:
@@ -2956,7 +2956,7 @@ function control_EventHandler_register_inline__P571341_mk(s) {
 
 
 
-function candyCanes_inline__P586321(s) {
+function candyCanes_inline__P587278(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -2966,20 +2966,20 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.factory___586324 = undefined;
-    s.src___586335 = undefined;
+    s.factory___587281 = undefined;
+    s.src___587292 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.arg1 = (s.lambdaArgs[1]);
       s.lambdaArgs = null;
     }
-    r0 = pxsim_pxtcore_mkClassInstance(wintereffects_ScaledShapeFactory__C585756_VT);
+    r0 = pxsim_pxtcore_mkClassInstance(wintereffects_ScaledShapeFactory__C586713_VT);
     s.tmp_0 = r0;
-    s.tmp_1 = wintereffects_ScaledShapeFactory_constructor__P585761_mk(s);
+    s.tmp_1 = wintereffects_ScaledShapeFactory_constructor__P586718_mk(s);
     s.tmp_1.arg0 = s.tmp_0;
     s.tmp_1.arg1 = 100;
     s.tmp_1.arg2 = 4;
-    s.tmp_2 = wintereffects_candyCaneShapes__P586302_mk(s);
+    s.tmp_2 = wintereffects_candyCaneShapes__P587259_mk(s);
     s.callLocIdx = 140; s.pc = 2; return s.tmp_2;
   case 2:
     r0 = s.retval;
@@ -2987,37 +2987,37 @@ switch (step) {
     s.callLocIdx = 141; s.pc = 1; return s.tmp_1;
   case 1:
     r0 = s.retval;
-    s.factory___586324 = (s.tmp_0);
-    r0 = (s.factory___586324).fields["minPercent"] = (15);
-    r0 = (s.factory___586324).fields["maxPercent"] = (150);
-    r0 = (s.factory___586324).fields["rotateImagesRate"] = (0.25);
+    s.factory___587281 = (s.tmp_0);
+    r0 = (s.factory___587281).fields["minPercent"] = (15);
+    r0 = (s.factory___587281).fields["maxPercent"] = (150);
+    r0 = (s.factory___587281).fields["rotateImagesRate"] = (0.25);
     r0 = pxsim_pxtcore_mkClassInstance(particles_ParticleSource__C565724_VT);
     s.tmp_0 = r0;
     s.tmp_1 = particles_ParticleSource_constructor__P565729_mk(s);
     s.tmp_1.arg0 = s.tmp_0;
     s.tmp_1.arg1 = s.arg0;
     s.tmp_1.arg2 = s.arg1;
-    s.tmp_1.arg3 = s.factory___586324;
+    s.tmp_1.arg3 = s.factory___587281;
     s.callLocIdx = 142; s.pc = 3; return s.tmp_1;
   case 3:
     r0 = s.retval;
-    s.src___586335 = (s.tmp_0);
-    r0 = s.src___586335;
+    s.src___587292 = (s.tmp_0);
+    r0 = s.src___587292;
     return leave(s, r0)
   default: oops()
 } } }
-candyCanes_inline__P586321.info = {"start":23823,"length":455,"line":491,"column":66,"endLine":504,"endColumn":5,"fileName":"main.ts","functionName":"inline","argumentNames":["anchor","particlesPerSecond"]}
+candyCanes_inline__P587278.info = {"start":23823,"length":455,"line":491,"column":66,"endLine":504,"endColumn":5,"fileName":"main.ts","functionName":"inline","argumentNames":["anchor","particlesPerSecond"]}
 
-function candyCanes_inline__P586321_mk(s) {
+function candyCanes_inline__P587278_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: candyCanes_inline__P586321, depth: s.depth + 1,
+        parent: s, fn: candyCanes_inline__P587278, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
   tmp_2: undefined,
-  factory___586324: undefined,
-  src___586335: undefined,
+  factory___587281: undefined,
+  src___587292: undefined,
   arg0: undefined,
   arg1: undefined,
 } }
@@ -6102,7 +6102,7 @@ function helpers_arrayShift__P562887_mk(s) {
 
 
 
-function wintereffects_candyCaneShapes__P586302(s) {
+function wintereffects_candyCaneShapes__P587259(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -6114,40 +6114,40 @@ switch (step) {
 
     r0 = pxsim_Array__mk();
     s.tmp_0 = r0;
-    r0 = pxsim.image.ofBuffer(_hex586305);
+    r0 = pxsim.image.ofBuffer(_hex587262);
     s.tmp_1 = r0;
     r0 = pxsim_Array__push(s.tmp_0, s.tmp_1);
-    r0 = pxsim.image.ofBuffer(_hex586307);
+    r0 = pxsim.image.ofBuffer(_hex587264);
     s.tmp_2 = r0;
     r0 = pxsim_Array__push(s.tmp_0, s.tmp_2);
-    r0 = pxsim.image.ofBuffer(_hex586309);
+    r0 = pxsim.image.ofBuffer(_hex587266);
     s.tmp_3 = r0;
     r0 = pxsim_Array__push(s.tmp_0, s.tmp_3);
-    r0 = pxsim.image.ofBuffer(_hex586311);
+    r0 = pxsim.image.ofBuffer(_hex587268);
     s.tmp_4 = r0;
     r0 = pxsim_Array__push(s.tmp_0, s.tmp_4);
-    r0 = pxsim.image.ofBuffer(_hex586313);
+    r0 = pxsim.image.ofBuffer(_hex587270);
     s.tmp_5 = r0;
     r0 = pxsim_Array__push(s.tmp_0, s.tmp_5);
-    r0 = pxsim.image.ofBuffer(_hex586315);
+    r0 = pxsim.image.ofBuffer(_hex587272);
     s.tmp_6 = r0;
     r0 = pxsim_Array__push(s.tmp_0, s.tmp_6);
-    r0 = pxsim.image.ofBuffer(_hex586317);
+    r0 = pxsim.image.ofBuffer(_hex587274);
     s.tmp_7 = r0;
     r0 = pxsim_Array__push(s.tmp_0, s.tmp_7);
-    r0 = pxsim.image.ofBuffer(_hex586319);
+    r0 = pxsim.image.ofBuffer(_hex587276);
     s.tmp_8 = r0;
     r0 = pxsim_Array__push(s.tmp_0, s.tmp_8);
     r0 = s.tmp_0;
     return leave(s, r0)
   default: oops()
 } } }
-wintereffects_candyCaneShapes__P586302.info = {"start":11184,"length":12521,"line":284,"column":4,"endLine":488,"endColumn":5,"fileName":"main.ts","functionName":"candyCaneShapes","argumentNames":[]}
+wintereffects_candyCaneShapes__P587259.info = {"start":11184,"length":12521,"line":284,"column":4,"endLine":488,"endColumn":5,"fileName":"main.ts","functionName":"candyCaneShapes","argumentNames":[]}
 
-function wintereffects_candyCaneShapes__P586302_mk(s) {
+function wintereffects_candyCaneShapes__P587259_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: wintereffects_candyCaneShapes__P586302, depth: s.depth + 1,
+        parent: s, fn: wintereffects_candyCaneShapes__P587259, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -6160,19 +6160,19 @@ function wintereffects_candyCaneShapes__P586302_mk(s) {
   tmp_8: undefined,
 } }
 
-const _hex586305 = pxsim.BufferMethods.createBufferFromHex("870418001800000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000f0ffff0f00000000000000002f2212f100000000000000f0212212110f0000000000001f112212f1000000000000001f1122ff0f000000000000001f11f10000000000000000001f11f10000000000000000001f2122ffffffffffffffff002f222212212212212211210f2f22221121221221221121f2f022221121221221221121f2002f1211212212212211210f00f0ffffffffffffffffff00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000")
-const _hex586307 = pxsim.BufferMethods.createBufferFromHex("8704180018000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ffff000000000000000000f02fff0f0000000000000000ff21220f00000000000000f01f11220f000000f0000000ff1211f10f00f0ffff0000f02f2211ff0f00ff11f10000ff2122f2ff00f02f11f100f01f1122ff0f00ff2212ff00ff2211f1ff00002f22220ff02f2212ff0f00001f22f20fff2222f2ff0000001f1111ff1f2122ff0f0000001f1111221211f2ff00000000ff1111221211ff0f00000000ff1f212222f1ff0000000000f0ff212222ff0f000000000000ff2f22f2ff00000000000000f0ffffff0f00000000000000000f000000000000000000000000000000000000000000")
-const _hex586309 = pxsim.BufferMethods.createBufferFromHex("8704180018000000000000000000f00f000000000000000000002ff2000000000000000000f022220f0000000000000000f011110f0000000000000000f011110f0000000000000000f011110f0000000000000000f022220f0000000000000000f022220f0000000000000000f022220f0000000000000000f011110f0000000000000000f011110f0000000000000000f022220f0000000000000000f022220f0000000000000f00f022220f0000000000f0f100f022220f00000000001f110ff011110f00000000001f110ff011110f00000000002f220ff012110f00000000002f22f22f22120f00000000002f22122122220f00000000002f12112122220f0000000000f011111122f2000000000000001f1111220f00000000000000f0ffffff0000000000")
-const _hex586311 = pxsim.BufferMethods.createBufferFromHex("87041800180000000000000000000000000000000000f00f00000000000000000000ffffff000000000000000000ff22f10f00000000000000002f1211ff0000000000000000ff1111f20f00000000000000f01f2122ff00000000000000f0ff2222f20f00000000000000ff222211ff00000000000000f02f1221f20f00000000000000ff112222ff00000000000000f02f2222f20f00000000000000ff222211ff00000000000000f02f1211f10f00000000000000ff111121ff00000000000000f01f2222f20000000000f0ff00ff2222f20000000000fff1fff02222f20000000000f011f1ff2122f20000000000f01122121121ff0f00000000f02f221211f1ff000000000000ff221211ff0f000000000000f02f11f1ff0000000000000000ffffff0f0000")
-const _hex586313 = pxsim.BufferMethods.createBufferFromHex("870418001800000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ffffffffffffffffff0f00f0121122122122121121f2002f121122122122121122220f2f12112212212212112222f2f012112212212212212222f200ffffffffffffffff2212f10000000000000000001f11f10000000000000000001f11f100000000000000f0ff2211f1000000000000001f212211f1000000000000f0112122120f000000000000001f2122f20000000000000000f0ffff0f00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000")
-const _hex586315 = pxsim.BufferMethods.createBufferFromHex("870418001800000000000000000000000000000000000000000000000000000000000000000000ffffff0f00000000000000f0ff22f2ff00000000000000ff222222ff0f0000000000f01f212212f1ff0000000000ff1121221211ff00000000f02f1121221111f100000000ff221211ff1111f1000000f02f2222f1ff2f12f1000000ff212222fff02f22f20000f01f1122f20ff02122f20000ff221121ff00ff1122ff00f02f2212f10f001f11f10f00ff112222ff00001ff1ff00001f1121f20f0000ffff0000002f1111ff00000000000000f02f12f10f00000000000000f02ff2ff000000000000000000ffff0f0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000")
-const _hex586317 = pxsim.BufferMethods.createBufferFromHex("87041800180000000000000000ffffff0f00000000000000f0221111f1000000000000002f221111110f0000000000f02222121121f20000000000f02222122122f20000000000f02122f22f22f20000000000f011210ff022f20000000000f011110ff011f10000000000f011110ff011f10000000000f022220f001f0f0000000000f022220f00f0000000000000f022220f0000000000000000f022220f0000000000000000f011110f0000000000000000f011110f0000000000000000f022220f0000000000000000f022220f0000000000000000f022220f0000000000000000f011110f0000000000000000f011110f0000000000000000f011110f0000000000000000f022220f0000000000000000002ff200000000000000000000f00f000000000000")
-const _hex586319 = pxsim.BufferMethods.createBufferFromHex("8704180018000000000000ffffff0000000000000000f01f11f20f00000000000000ff111122ff000000000000f01f112122f20f0000000000ff1211212212ff0000000000ff2211f12f11f100000000002f2222ffff11f100000000002f2222fff0ffff00000000002f2222f20f00000000000000ff221111ff00000000000000f01f1111f20f00000000000000ff112122ff00000000000000f01f2222f20f00000000000000ff222211ff00000000000000f02f1211f20f00000000000000ff112122ff00000000000000f01f2222ff0f00000000000000ff2212f1ff00000000000000f02f1111ff0000000000000000ff1111f20000000000000000f01f21f2000000000000000000ff22ff000000000000000000f0ff0f0000000000000000000000000000")
+const _hex587262 = pxsim.BufferMethods.createBufferFromHex("870418001800000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000f0ffff0f00000000000000002f2212f100000000000000f0212212110f0000000000001f112212f1000000000000001f1122ff0f000000000000001f11f10000000000000000001f11f10000000000000000001f2122ffffffffffffffff002f222212212212212211210f2f22221121221221221121f2f022221121221221221121f2002f1211212212212211210f00f0ffffffffffffffffff00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000")
+const _hex587264 = pxsim.BufferMethods.createBufferFromHex("8704180018000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ffff000000000000000000f02fff0f0000000000000000ff21220f00000000000000f01f11220f000000f0000000ff1211f10f00f0ffff0000f02f2211ff0f00ff11f10000ff2122f2ff00f02f11f100f01f1122ff0f00ff2212ff00ff2211f1ff00002f22220ff02f2212ff0f00001f22f20fff2222f2ff0000001f1111ff1f2122ff0f0000001f1111221211f2ff00000000ff1111221211ff0f00000000ff1f212222f1ff0000000000f0ff212222ff0f000000000000ff2f22f2ff00000000000000f0ffffff0f00000000000000000f000000000000000000000000000000000000000000")
+const _hex587266 = pxsim.BufferMethods.createBufferFromHex("8704180018000000000000000000f00f000000000000000000002ff2000000000000000000f022220f0000000000000000f011110f0000000000000000f011110f0000000000000000f011110f0000000000000000f022220f0000000000000000f022220f0000000000000000f022220f0000000000000000f011110f0000000000000000f011110f0000000000000000f022220f0000000000000000f022220f0000000000000f00f022220f0000000000f0f100f022220f00000000001f110ff011110f00000000001f110ff011110f00000000002f220ff012110f00000000002f22f22f22120f00000000002f22122122220f00000000002f12112122220f0000000000f011111122f2000000000000001f1111220f00000000000000f0ffffff0000000000")
+const _hex587268 = pxsim.BufferMethods.createBufferFromHex("87041800180000000000000000000000000000000000f00f00000000000000000000ffffff000000000000000000ff22f10f00000000000000002f1211ff0000000000000000ff1111f20f00000000000000f01f2122ff00000000000000f0ff2222f20f00000000000000ff222211ff00000000000000f02f1221f20f00000000000000ff112222ff00000000000000f02f2222f20f00000000000000ff222211ff00000000000000f02f1211f10f00000000000000ff111121ff00000000000000f01f2222f20000000000f0ff00ff2222f20000000000fff1fff02222f20000000000f011f1ff2122f20000000000f01122121121ff0f00000000f02f221211f1ff000000000000ff221211ff0f000000000000f02f11f1ff0000000000000000ffffff0f0000")
+const _hex587270 = pxsim.BufferMethods.createBufferFromHex("870418001800000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ffffffffffffffffff0f00f0121122122122121121f2002f121122122122121122220f2f12112212212212112222f2f012112212212212212222f200ffffffffffffffff2212f10000000000000000001f11f10000000000000000001f11f100000000000000f0ff2211f1000000000000001f212211f1000000000000f0112122120f000000000000001f2122f20000000000000000f0ffff0f00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000")
+const _hex587272 = pxsim.BufferMethods.createBufferFromHex("870418001800000000000000000000000000000000000000000000000000000000000000000000ffffff0f00000000000000f0ff22f2ff00000000000000ff222222ff0f0000000000f01f212212f1ff0000000000ff1121221211ff00000000f02f1121221111f100000000ff221211ff1111f1000000f02f2222f1ff2f12f1000000ff212222fff02f22f20000f01f1122f20ff02122f20000ff221121ff00ff1122ff00f02f2212f10f001f11f10f00ff112222ff00001ff1ff00001f1121f20f0000ffff0000002f1111ff00000000000000f02f12f10f00000000000000f02ff2ff000000000000000000ffff0f0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000")
+const _hex587274 = pxsim.BufferMethods.createBufferFromHex("87041800180000000000000000ffffff0f00000000000000f0221111f1000000000000002f221111110f0000000000f02222121121f20000000000f02222122122f20000000000f02122f22f22f20000000000f011210ff022f20000000000f011110ff011f10000000000f011110ff011f10000000000f022220f001f0f0000000000f022220f00f0000000000000f022220f0000000000000000f022220f0000000000000000f011110f0000000000000000f011110f0000000000000000f022220f0000000000000000f022220f0000000000000000f022220f0000000000000000f011110f0000000000000000f011110f0000000000000000f011110f0000000000000000f022220f0000000000000000002ff200000000000000000000f00f000000000000")
+const _hex587276 = pxsim.BufferMethods.createBufferFromHex("8704180018000000000000ffffff0000000000000000f01f11f20f00000000000000ff111122ff000000000000f01f112122f20f0000000000ff1211212212ff0000000000ff2211f12f11f100000000002f2222ffff11f100000000002f2222fff0ffff00000000002f2222f20f00000000000000ff221111ff00000000000000f01f1111f20f00000000000000ff112122ff00000000000000f01f2222f20f00000000000000ff222211ff00000000000000f02f1211f20f00000000000000ff112122ff00000000000000f01f2222ff0f00000000000000ff2212f1ff00000000000000f02f1111ff0000000000000000ff1111f20000000000000000f01f21f2000000000000000000ff22ff000000000000000000f0ff0f0000000000000000000000000000")
 
 
 
 
-function wintereffects_ScaledShapeFactory_constructor__P585761(s) {
+function wintereffects_ScaledShapeFactory_constructor__P586718(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -6190,17 +6190,17 @@ switch (step) {
       s.lambdaArgs = null;
     }
     r0 = s.arg0;
-    if (!checkSubtype(r0, wintereffects_ScaledShapeFactory__C585756_VT)) failedCast(r0);
+    if (!checkSubtype(r0, wintereffects_ScaledShapeFactory__C586713_VT)) failedCast(r0);
     s.tmp_0 = particles_SprayFactory_constructor__P565765_mk(s);
     s.tmp_0.arg0 = s.arg0;
     s.tmp_0.arg1 = s.arg1;
-    s.tmp_1 = wintereffects_spawningDirectionToArcCenter__P585724_mk(s);
+    s.tmp_1 = wintereffects_spawningDirectionToArcCenter__P586681_mk(s);
     s.tmp_1.arg0 = s.arg2;
     s.callLocIdx = 62; s.pc = 12; return s.tmp_1;
   case 12:
     r0 = s.retval;
     s.tmp_0.arg2 = r0;
-    s.tmp_2 = wintereffects_spawningDirectionToRange__P585744_mk(s);
+    s.tmp_2 = wintereffects_spawningDirectionToRange__P586701_mk(s);
     s.tmp_2.arg0 = s.arg2;
     s.callLocIdx = 63; s.pc = 13; return s.tmp_2;
   case 13:
@@ -6287,12 +6287,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-wintereffects_ScaledShapeFactory_constructor__P585761.info = {"start":2332,"length":1324,"line":85,"column":8,"endLine":114,"endColumn":9,"fileName":"main.ts","functionName":"inline","argumentNames":["this","particleSpeed","spawnDirection","sources"]}
+wintereffects_ScaledShapeFactory_constructor__P586718.info = {"start":2332,"length":1324,"line":85,"column":8,"endLine":114,"endColumn":9,"fileName":"main.ts","functionName":"inline","argumentNames":["this","particleSpeed","spawnDirection","sources"]}
 
-function wintereffects_ScaledShapeFactory_constructor__P585761_mk(s) {
+function wintereffects_ScaledShapeFactory_constructor__P586718_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: wintereffects_ScaledShapeFactory_constructor__P585761, depth: s.depth + 1,
+        parent: s, fn: wintereffects_ScaledShapeFactory_constructor__P586718, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -6310,7 +6310,7 @@ function wintereffects_ScaledShapeFactory_constructor__P585761_mk(s) {
 
 
 
-function wintereffects_spawningDirectionToRange__P585744(s) {
+function wintereffects_spawningDirectionToRange__P586701(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -6361,12 +6361,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-wintereffects_spawningDirectionToRange__P585744.info = {"start":1431,"length":494,"line":58,"column":4,"endLine":72,"endColumn":5,"fileName":"main.ts","functionName":"spawningDirectionToRange","argumentNames":["sd"]}
+wintereffects_spawningDirectionToRange__P586701.info = {"start":1431,"length":494,"line":58,"column":4,"endLine":72,"endColumn":5,"fileName":"main.ts","functionName":"spawningDirectionToRange","argumentNames":["sd"]}
 
-function wintereffects_spawningDirectionToRange__P585744_mk(s) {
+function wintereffects_spawningDirectionToRange__P586701_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: wintereffects_spawningDirectionToRange__P585744, depth: s.depth + 1,
+        parent: s, fn: wintereffects_spawningDirectionToRange__P586701, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   arg0: undefined,
@@ -6376,7 +6376,7 @@ function wintereffects_spawningDirectionToRange__P585744_mk(s) {
 
 
 
-function wintereffects_spawningDirectionToArcCenter__P585724(s) {
+function wintereffects_spawningDirectionToArcCenter__P586681(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -6439,12 +6439,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-wintereffects_spawningDirectionToArcCenter__P585724.info = {"start":761,"length":664,"line":36,"column":4,"endLine":56,"endColumn":5,"fileName":"main.ts","functionName":"spawningDirectionToArcCenter","argumentNames":["sd"]}
+wintereffects_spawningDirectionToArcCenter__P586681.info = {"start":761,"length":664,"line":36,"column":4,"endLine":56,"endColumn":5,"fileName":"main.ts","functionName":"spawningDirectionToArcCenter","argumentNames":["sd"]}
 
-function wintereffects_spawningDirectionToArcCenter__P585724_mk(s) {
+function wintereffects_spawningDirectionToArcCenter__P586681_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: wintereffects_spawningDirectionToArcCenter__P585724, depth: s.depth + 1,
+        parent: s, fn: wintereffects_spawningDirectionToArcCenter__P586681, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   arg0: undefined,
@@ -6549,7 +6549,7 @@ function effects_ParticleEffect_constructor__P565836_mk(s) {
 
 
 
-function snowflakes_inline__P586415(s) {
+function snowflakes_inline__P587372(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -6559,20 +6559,20 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.factory___586418 = undefined;
-    s.src___586429 = undefined;
+    s.factory___587375 = undefined;
+    s.src___587386 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.arg1 = (s.lambdaArgs[1]);
       s.lambdaArgs = null;
     }
-    r0 = pxsim_pxtcore_mkClassInstance(wintereffects_ScaledShapeFactory__C585756_VT);
+    r0 = pxsim_pxtcore_mkClassInstance(wintereffects_ScaledShapeFactory__C586713_VT);
     s.tmp_0 = r0;
-    s.tmp_1 = wintereffects_ScaledShapeFactory_constructor__P585761_mk(s);
+    s.tmp_1 = wintereffects_ScaledShapeFactory_constructor__P586718_mk(s);
     s.tmp_1.arg0 = s.tmp_0;
     s.tmp_1.arg1 = 30;
     s.tmp_1.arg2 = 0;
-    s.tmp_2 = wintereffects_snowflakeShapes__P586380_mk(s);
+    s.tmp_2 = wintereffects_snowflakeShapes__P587337_mk(s);
     s.callLocIdx = 148; s.pc = 2; return s.tmp_2;
   case 2:
     r0 = s.retval;
@@ -6580,37 +6580,37 @@ switch (step) {
     s.callLocIdx = 149; s.pc = 1; return s.tmp_1;
   case 1:
     r0 = s.retval;
-    s.factory___586418 = (s.tmp_0);
-    r0 = (s.factory___586418).fields["randomlySwitchDirectionsRate"] = (0.01);
-    r0 = (s.factory___586418).fields["minPercent"] = (50);
-    r0 = (s.factory___586418).fields["maxPercent"] = (200);
+    s.factory___587375 = (s.tmp_0);
+    r0 = (s.factory___587375).fields["randomlySwitchDirectionsRate"] = (0.01);
+    r0 = (s.factory___587375).fields["minPercent"] = (50);
+    r0 = (s.factory___587375).fields["maxPercent"] = (200);
     r0 = pxsim_pxtcore_mkClassInstance(particles_ParticleSource__C565724_VT);
     s.tmp_0 = r0;
     s.tmp_1 = particles_ParticleSource_constructor__P565729_mk(s);
     s.tmp_1.arg0 = s.tmp_0;
     s.tmp_1.arg1 = s.arg0;
     s.tmp_1.arg2 = s.arg1;
-    s.tmp_1.arg3 = s.factory___586418;
+    s.tmp_1.arg3 = s.factory___587375;
     s.callLocIdx = 150; s.pc = 3; return s.tmp_1;
   case 3:
     r0 = s.retval;
-    s.src___586429 = (s.tmp_0);
-    r0 = s.src___586429;
+    s.src___587386 = (s.tmp_0);
+    r0 = s.src___587386;
     return leave(s, r0)
   default: oops()
 } } }
-snowflakes_inline__P586415.info = {"start":31589,"length":463,"line":702,"column":66,"endLine":715,"endColumn":5,"fileName":"main.ts","functionName":"inline","argumentNames":["anchor","particlesPerSecond"]}
+snowflakes_inline__P587372.info = {"start":31589,"length":463,"line":702,"column":66,"endLine":715,"endColumn":5,"fileName":"main.ts","functionName":"inline","argumentNames":["anchor","particlesPerSecond"]}
 
-function snowflakes_inline__P586415_mk(s) {
+function snowflakes_inline__P587372_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: snowflakes_inline__P586415, depth: s.depth + 1,
+        parent: s, fn: snowflakes_inline__P587372, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
   tmp_2: undefined,
-  factory___586418: undefined,
-  src___586429: undefined,
+  factory___587375: undefined,
+  src___587386: undefined,
   arg0: undefined,
   arg1: undefined,
 } }
@@ -6619,7 +6619,7 @@ function snowflakes_inline__P586415_mk(s) {
 
 
 
-function wintereffects_snowflakeShapes__P586380(s) {
+function wintereffects_snowflakeShapes__P587337(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -6631,64 +6631,64 @@ switch (step) {
 
     r0 = pxsim_Array__mk();
     s.tmp_0 = r0;
-    r0 = pxsim.image.ofBuffer(_hex586383);
+    r0 = pxsim.image.ofBuffer(_hex587340);
     s.tmp_1 = r0;
     r0 = pxsim_Array__push(s.tmp_0, s.tmp_1);
-    r0 = pxsim.image.ofBuffer(_hex586385);
+    r0 = pxsim.image.ofBuffer(_hex587342);
     s.tmp_2 = r0;
     r0 = pxsim_Array__push(s.tmp_0, s.tmp_2);
-    r0 = pxsim.image.ofBuffer(_hex586387);
+    r0 = pxsim.image.ofBuffer(_hex587344);
     s.tmp_3 = r0;
     r0 = pxsim_Array__push(s.tmp_0, s.tmp_3);
-    r0 = pxsim.image.ofBuffer(_hex586389);
+    r0 = pxsim.image.ofBuffer(_hex587346);
     s.tmp_4 = r0;
     r0 = pxsim_Array__push(s.tmp_0, s.tmp_4);
-    r0 = pxsim.image.ofBuffer(_hex586391);
+    r0 = pxsim.image.ofBuffer(_hex587348);
     s.tmp_5 = r0;
     r0 = pxsim_Array__push(s.tmp_0, s.tmp_5);
-    r0 = pxsim.image.ofBuffer(_hex586393);
+    r0 = pxsim.image.ofBuffer(_hex587350);
     s.tmp_6 = r0;
     r0 = pxsim_Array__push(s.tmp_0, s.tmp_6);
-    r0 = pxsim.image.ofBuffer(_hex586395);
+    r0 = pxsim.image.ofBuffer(_hex587352);
     s.tmp_7 = r0;
     r0 = pxsim_Array__push(s.tmp_0, s.tmp_7);
-    r0 = pxsim.image.ofBuffer(_hex586397);
+    r0 = pxsim.image.ofBuffer(_hex587354);
     s.tmp_8 = r0;
     r0 = pxsim_Array__push(s.tmp_0, s.tmp_8);
-    r0 = pxsim.image.ofBuffer(_hex586399);
+    r0 = pxsim.image.ofBuffer(_hex587356);
     s.tmp_9 = r0;
     r0 = pxsim_Array__push(s.tmp_0, s.tmp_9);
-    r0 = pxsim.image.ofBuffer(_hex586401);
+    r0 = pxsim.image.ofBuffer(_hex587358);
     s.tmp_10 = r0;
     r0 = pxsim_Array__push(s.tmp_0, s.tmp_10);
-    r0 = pxsim.image.ofBuffer(_hex586403);
+    r0 = pxsim.image.ofBuffer(_hex587360);
     s.tmp_11 = r0;
     r0 = pxsim_Array__push(s.tmp_0, s.tmp_11);
-    r0 = pxsim.image.ofBuffer(_hex586405);
+    r0 = pxsim.image.ofBuffer(_hex587362);
     s.tmp_12 = r0;
     r0 = pxsim_Array__push(s.tmp_0, s.tmp_12);
-    r0 = pxsim.image.ofBuffer(_hex586407);
+    r0 = pxsim.image.ofBuffer(_hex587364);
     s.tmp_13 = r0;
     r0 = pxsim_Array__push(s.tmp_0, s.tmp_13);
-    r0 = pxsim.image.ofBuffer(_hex586409);
+    r0 = pxsim.image.ofBuffer(_hex587366);
     s.tmp_14 = r0;
     r0 = pxsim_Array__push(s.tmp_0, s.tmp_14);
-    r0 = pxsim.image.ofBuffer(_hex586411);
+    r0 = pxsim.image.ofBuffer(_hex587368);
     s.tmp_15 = r0;
     r0 = pxsim_Array__push(s.tmp_0, s.tmp_15);
-    r0 = pxsim.image.ofBuffer(_hex586413);
+    r0 = pxsim.image.ofBuffer(_hex587370);
     s.tmp_16 = r0;
     r0 = pxsim_Array__push(s.tmp_0, s.tmp_16);
     r0 = s.tmp_0;
     return leave(s, r0)
   default: oops()
 } } }
-wintereffects_snowflakeShapes__P586380.info = {"start":30447,"length":1024,"line":645,"column":4,"endLine":699,"endColumn":5,"fileName":"main.ts","functionName":"snowflakeShapes","argumentNames":[]}
+wintereffects_snowflakeShapes__P587337.info = {"start":30447,"length":1024,"line":645,"column":4,"endLine":699,"endColumn":5,"fileName":"main.ts","functionName":"snowflakeShapes","argumentNames":[]}
 
-function wintereffects_snowflakeShapes__P586380_mk(s) {
+function wintereffects_snowflakeShapes__P587337_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: wintereffects_snowflakeShapes__P586380, depth: s.depth + 1,
+        parent: s, fn: wintereffects_snowflakeShapes__P587337, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -6709,27 +6709,27 @@ function wintereffects_snowflakeShapes__P586380_mk(s) {
   tmp_16: undefined,
 } }
 
-const _hex586383 = pxsim.BufferMethods.createBufferFromHex("870401000100000001000000")
-const _hex586385 = pxsim.BufferMethods.createBufferFromHex("870401000100000009000000")
-const _hex586387 = pxsim.BufferMethods.createBufferFromHex("87040200020000001900000001000000")
-const _hex586389 = pxsim.BufferMethods.createBufferFromHex("8704030003000000000100001009000091010000")
-const _hex586391 = pxsim.BufferMethods.createBufferFromHex("87040200020000001000000091000000")
-const _hex586393 = pxsim.BufferMethods.createBufferFromHex("8704030003000000910100001009000000010000")
-const _hex586395 = pxsim.BufferMethods.createBufferFromHex("8704030003000000910100001900000001000000")
-const _hex586397 = pxsim.BufferMethods.createBufferFromHex("8704030003000000010000001900000091010000")
-const _hex586399 = pxsim.BufferMethods.createBufferFromHex("87040200010000000100000009000000")
-const _hex586401 = pxsim.BufferMethods.createBufferFromHex("87040200010000000900000001000000")
-const _hex586403 = pxsim.BufferMethods.createBufferFromHex("87040200010000000100000001000000")
-const _hex586405 = pxsim.BufferMethods.createBufferFromHex("87040200010000000900000009000000")
-const _hex586407 = pxsim.BufferMethods.createBufferFromHex("870401000200000091000000")
-const _hex586409 = pxsim.BufferMethods.createBufferFromHex("870401000200000019000000")
-const _hex586411 = pxsim.BufferMethods.createBufferFromHex("87040200020000000900000010000000")
-const _hex586413 = pxsim.BufferMethods.createBufferFromHex("87040200020000009000000001000000")
+const _hex587340 = pxsim.BufferMethods.createBufferFromHex("870401000100000001000000")
+const _hex587342 = pxsim.BufferMethods.createBufferFromHex("870401000100000009000000")
+const _hex587344 = pxsim.BufferMethods.createBufferFromHex("87040200020000001900000001000000")
+const _hex587346 = pxsim.BufferMethods.createBufferFromHex("8704030003000000000100001009000091010000")
+const _hex587348 = pxsim.BufferMethods.createBufferFromHex("87040200020000001000000091000000")
+const _hex587350 = pxsim.BufferMethods.createBufferFromHex("8704030003000000910100001009000000010000")
+const _hex587352 = pxsim.BufferMethods.createBufferFromHex("8704030003000000910100001900000001000000")
+const _hex587354 = pxsim.BufferMethods.createBufferFromHex("8704030003000000010000001900000091010000")
+const _hex587356 = pxsim.BufferMethods.createBufferFromHex("87040200010000000100000009000000")
+const _hex587358 = pxsim.BufferMethods.createBufferFromHex("87040200010000000900000001000000")
+const _hex587360 = pxsim.BufferMethods.createBufferFromHex("87040200010000000100000001000000")
+const _hex587362 = pxsim.BufferMethods.createBufferFromHex("87040200010000000900000009000000")
+const _hex587364 = pxsim.BufferMethods.createBufferFromHex("870401000200000091000000")
+const _hex587366 = pxsim.BufferMethods.createBufferFromHex("870401000200000019000000")
+const _hex587368 = pxsim.BufferMethods.createBufferFromHex("87040200020000000900000010000000")
+const _hex587370 = pxsim.BufferMethods.createBufferFromHex("87040200020000009000000001000000")
 
 
 
 
-function holidayCookies_inline__P586359(s) {
+function holidayCookies_inline__P587316(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -6739,20 +6739,20 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.factory___586362 = undefined;
-    s.src___586373 = undefined;
+    s.factory___587319 = undefined;
+    s.src___587330 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.arg1 = (s.lambdaArgs[1]);
       s.lambdaArgs = null;
     }
-    r0 = pxsim_pxtcore_mkClassInstance(wintereffects_ScaledShapeFactory__C585756_VT);
+    r0 = pxsim_pxtcore_mkClassInstance(wintereffects_ScaledShapeFactory__C586713_VT);
     s.tmp_0 = r0;
-    s.tmp_1 = wintereffects_ScaledShapeFactory_constructor__P585761_mk(s);
+    s.tmp_1 = wintereffects_ScaledShapeFactory_constructor__P586718_mk(s);
     s.tmp_1.arg0 = s.tmp_0;
     s.tmp_1.arg1 = 135;
     s.tmp_1.arg2 = 0;
-    s.tmp_2 = wintereffects_cookieShapes__P586342_mk(s);
+    s.tmp_2 = wintereffects_cookieShapes__P587299_mk(s);
     s.callLocIdx = 144; s.pc = 2; return s.tmp_2;
   case 2:
     r0 = s.retval;
@@ -6760,37 +6760,37 @@ switch (step) {
     s.callLocIdx = 145; s.pc = 1; return s.tmp_1;
   case 1:
     r0 = s.retval;
-    s.factory___586362 = (s.tmp_0);
-    r0 = (s.factory___586362).fields["minPercent"] = (1);
-    r0 = (s.factory___586362).fields["maxPercent"] = (40);
-    r0 = (s.factory___586362).fields["growthRate"] = (0.07);
+    s.factory___587319 = (s.tmp_0);
+    r0 = (s.factory___587319).fields["minPercent"] = (1);
+    r0 = (s.factory___587319).fields["maxPercent"] = (40);
+    r0 = (s.factory___587319).fields["growthRate"] = (0.07);
     r0 = pxsim_pxtcore_mkClassInstance(particles_ParticleSource__C565724_VT);
     s.tmp_0 = r0;
     s.tmp_1 = particles_ParticleSource_constructor__P565729_mk(s);
     s.tmp_1.arg0 = s.tmp_0;
     s.tmp_1.arg1 = s.arg0;
     s.tmp_1.arg2 = s.arg1;
-    s.tmp_1.arg3 = s.factory___586362;
+    s.tmp_1.arg3 = s.factory___587319;
     s.callLocIdx = 146; s.pc = 3; return s.tmp_1;
   case 3:
     r0 = s.retval;
-    s.src___586373 = (s.tmp_0);
-    r0 = s.src___586373;
+    s.src___587330 = (s.tmp_0);
+    r0 = s.src___587330;
     return leave(s, r0)
   default: oops()
 } } }
-holidayCookies_inline__P586359.info = {"start":30000,"length":439,"line":632,"column":70,"endLine":643,"endColumn":5,"fileName":"main.ts","functionName":"inline","argumentNames":["anchor","particlesPerSecond"]}
+holidayCookies_inline__P587316.info = {"start":30000,"length":439,"line":632,"column":70,"endLine":643,"endColumn":5,"fileName":"main.ts","functionName":"inline","argumentNames":["anchor","particlesPerSecond"]}
 
-function holidayCookies_inline__P586359_mk(s) {
+function holidayCookies_inline__P587316_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: holidayCookies_inline__P586359, depth: s.depth + 1,
+        parent: s, fn: holidayCookies_inline__P587316, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
   tmp_2: undefined,
-  factory___586362: undefined,
-  src___586373: undefined,
+  factory___587319: undefined,
+  src___587330: undefined,
   arg0: undefined,
   arg1: undefined,
 } }
@@ -6799,7 +6799,7 @@ function holidayCookies_inline__P586359_mk(s) {
 
 
 
-function wintereffects_cookieShapes__P586342(s) {
+function wintereffects_cookieShapes__P587299(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -6811,37 +6811,37 @@ switch (step) {
 
     r0 = pxsim_Array__mk();
     s.tmp_0 = r0;
-    r0 = pxsim.image.ofBuffer(_hex586345);
+    r0 = pxsim.image.ofBuffer(_hex587302);
     s.tmp_1 = r0;
     r0 = pxsim_Array__push(s.tmp_0, s.tmp_1);
-    r0 = pxsim.image.ofBuffer(_hex586347);
+    r0 = pxsim.image.ofBuffer(_hex587304);
     s.tmp_2 = r0;
     r0 = pxsim_Array__push(s.tmp_0, s.tmp_2);
-    r0 = pxsim.image.ofBuffer(_hex586349);
+    r0 = pxsim.image.ofBuffer(_hex587306);
     s.tmp_3 = r0;
     r0 = pxsim_Array__push(s.tmp_0, s.tmp_3);
-    r0 = pxsim.image.ofBuffer(_hex586351);
+    r0 = pxsim.image.ofBuffer(_hex587308);
     s.tmp_4 = r0;
     r0 = pxsim_Array__push(s.tmp_0, s.tmp_4);
-    r0 = pxsim.image.ofBuffer(_hex586353);
+    r0 = pxsim.image.ofBuffer(_hex587310);
     s.tmp_5 = r0;
     r0 = pxsim_Array__push(s.tmp_0, s.tmp_5);
-    r0 = pxsim.image.ofBuffer(_hex586355);
+    r0 = pxsim.image.ofBuffer(_hex587312);
     s.tmp_6 = r0;
     r0 = pxsim_Array__push(s.tmp_0, s.tmp_6);
-    r0 = pxsim.image.ofBuffer(_hex586357);
+    r0 = pxsim.image.ofBuffer(_hex587314);
     s.tmp_7 = r0;
     r0 = pxsim_Array__push(s.tmp_0, s.tmp_7);
     r0 = s.tmp_0;
     return leave(s, r0)
   default: oops()
 } } }
-wintereffects_cookieShapes__P586342.info = {"start":24286,"length":5587,"line":506,"column":4,"endLine":629,"endColumn":5,"fileName":"main.ts","functionName":"cookieShapes","argumentNames":[]}
+wintereffects_cookieShapes__P587299.info = {"start":24286,"length":5587,"line":506,"column":4,"endLine":629,"endColumn":5,"fileName":"main.ts","functionName":"cookieShapes","argumentNames":[]}
 
-function wintereffects_cookieShapes__P586342_mk(s) {
+function wintereffects_cookieShapes__P587299_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: wintereffects_cookieShapes__P586342, depth: s.depth + 1,
+        parent: s, fn: wintereffects_cookieShapes__P587299, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -6853,13 +6853,13 @@ function wintereffects_cookieShapes__P586342_mk(s) {
   tmp_7: undefined,
 } }
 
-const _hex586345 = pxsim.BufferMethods.createBufferFromHex("87041000100000000000f0ffff0f000000f0bfbbbbfb0f0000bfbbbbb7bbfb00f0bb2bbbbbb7db0ff0bbbbbbbbbbbb0fbfbbbb7bbbbbb2fdbf7bbbbbbbbbbbfdbfbbbbbbbbb2bbfb7f2b7b2bbbbbbbfbbfbbbbbbbbbbb7fdbfbbbbbb7bbbbbfdf07b7bbbbbbbdb0ff0bbbbb2bbbbdd0f00bfbbbbbbdbfd0000f0bfbbdbfd0f000000f0ffff0f0000")
-const _hex586347 = pxsim.BufferMethods.createBufferFromHex("87041000100000000000f0ffff0f000000f03f3331f30f00003f31311313f300f03333222213330ff03121222232130f3f332222222233f33f132222222213f31f332222222231f13f332222222213f33f132222222233f33f312222222213f3f03323222232330ff03331222213310f003f33311333f30000f01f3333f10f000000f0ffff0f0000")
-const _hex586349 = pxsim.BufferMethods.createBufferFromHex("87041000100000000000f0ffff0f000000f01f1111f10f00001f11111111f100f01111111111110ff01111116111110f1f111116761111f11f111666721111f11f66677277ee11f11f77777727ee11f11f111777731111f11f111117771111f1f01111117111110ff01111111111110f001f11111111f10000f01f1111f10f000000f0ffff0f0000")
-const _hex586351 = pxsim.BufferMethods.createBufferFromHex("87041000100000000000f0ffff0f000000f0efeeeefe0f0000ef1e1111e1fe00f01e11111111e10ff01e11111111e10fef11f111111f11feef11111111f111feef11114114f111feef11114114f111feef11111114f111feef11f111141f11fef01e11111111e10ff01e11111111e10f00ef1e1111e1fe0000f0efeeeefe0f000000f0ffff0f0000")
-const _hex586353 = pxsim.BufferMethods.createBufferFromHex("8704100010000000000000ff0f00ff0f0000f0dd0ff0ddfd0000f0edfff0edfe0000f0eef100effef0ff0f1ffeffeffeefddfdefeeee1efedfefefe7eeeeeef1dfeefe272e2eff0fdfeefe27272eff0fefefef77eeeeeef1efeefeefeeee1efef0ff0f1ffeffeffe0000f0eef100effe0000f0eefff0eefe0000f0ee0ff0eefe000000ff0f00ff0f")
-const _hex586355 = pxsim.BufferMethods.createBufferFromHex("87041000100000000000f0ffff0f000000f01f1111f10f00001f11111111f100f01111666611110ff01111666616110f1f111166666611f11f616666666116f11f616616666116f11f616616116116f11f111166666611f11f111166661611f1f01111666611110ff01111111111110f001f11111111f10000f01f1111f10f000000f0ffff0f0000")
-const _hex586357 = pxsim.BufferMethods.createBufferFromHex("87041000100000000000f0ffff0f000000f0ffffffff0f00002ff2ffff7ff700f022f2ffff7f770ff022f2ffff7f770f2f22f2ffff7f77f72f22f2ffff7f77f72f22f2ffff7f77f72f22f2ffff7f77f72f22f2ffff7f77f72f22f2ffff7f77f7f022f2ffff7f770ff022f2ffff7f770f002ff2ffff7ff70000f0ffffffff0f000000f0ffff0f0000")
+const _hex587302 = pxsim.BufferMethods.createBufferFromHex("87041000100000000000f0ffff0f000000f0bfbbbbfb0f0000bfbbbbb7bbfb00f0bb2bbbbbb7db0ff0bbbbbbbbbbbb0fbfbbbb7bbbbbb2fdbf7bbbbbbbbbbbfdbfbbbbbbbbb2bbfb7f2b7b2bbbbbbbfbbfbbbbbbbbbbb7fdbfbbbbbb7bbbbbfdf07b7bbbbbbbdb0ff0bbbbb2bbbbdd0f00bfbbbbbbdbfd0000f0bfbbdbfd0f000000f0ffff0f0000")
+const _hex587304 = pxsim.BufferMethods.createBufferFromHex("87041000100000000000f0ffff0f000000f03f3331f30f00003f31311313f300f03333222213330ff03121222232130f3f332222222233f33f132222222213f31f332222222231f13f332222222213f33f132222222233f33f312222222213f3f03323222232330ff03331222213310f003f33311333f30000f01f3333f10f000000f0ffff0f0000")
+const _hex587306 = pxsim.BufferMethods.createBufferFromHex("87041000100000000000f0ffff0f000000f01f1111f10f00001f11111111f100f01111111111110ff01111116111110f1f111116761111f11f111666721111f11f66677277ee11f11f77777727ee11f11f111777731111f11f111117771111f1f01111117111110ff01111111111110f001f11111111f10000f01f1111f10f000000f0ffff0f0000")
+const _hex587308 = pxsim.BufferMethods.createBufferFromHex("87041000100000000000f0ffff0f000000f0efeeeefe0f0000ef1e1111e1fe00f01e11111111e10ff01e11111111e10fef11f111111f11feef11111111f111feef11114114f111feef11114114f111feef11111114f111feef11f111141f11fef01e11111111e10ff01e11111111e10f00ef1e1111e1fe0000f0efeeeefe0f000000f0ffff0f0000")
+const _hex587310 = pxsim.BufferMethods.createBufferFromHex("8704100010000000000000ff0f00ff0f0000f0dd0ff0ddfd0000f0edfff0edfe0000f0eef100effef0ff0f1ffeffeffeefddfdefeeee1efedfefefe7eeeeeef1dfeefe272e2eff0fdfeefe27272eff0fefefef77eeeeeef1efeefeefeeee1efef0ff0f1ffeffeffe0000f0eef100effe0000f0eefff0eefe0000f0ee0ff0eefe000000ff0f00ff0f")
+const _hex587312 = pxsim.BufferMethods.createBufferFromHex("87041000100000000000f0ffff0f000000f01f1111f10f00001f11111111f100f01111666611110ff01111666616110f1f111166666611f11f616666666116f11f616616666116f11f616616116116f11f111166666611f11f111166661611f1f01111666611110ff01111111111110f001f11111111f10000f01f1111f10f000000f0ffff0f0000")
+const _hex587314 = pxsim.BufferMethods.createBufferFromHex("87041000100000000000f0ffff0f000000f0ffffffff0f00002ff2ffff7ff700f022f2ffff7f770ff022f2ffff7f770f2f22f2ffff7f77f72f22f2ffff7f77f72f22f2ffff7f77f72f22f2ffff7f77f72f22f2ffff7f77f72f22f2ffff7f77f7f022f2ffff7f770ff022f2ffff7f770f002ff2ffff7ff70000f0ffffffff0f000000f0ffff0f0000")
 
 
 
@@ -7637,7 +7637,7 @@ function effects_ScreenEffect_endScreenEffect__P565842_mk(s) {
 
 
 
-function snowball_inline__P586287(s) {
+function snowball_inline__P587244(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -7647,20 +7647,20 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.factory___586290 = undefined;
-    s.src___586295 = undefined;
+    s.factory___587247 = undefined;
+    s.src___587252 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.arg1 = (s.lambdaArgs[1]);
       s.lambdaArgs = null;
     }
-    r0 = pxsim_pxtcore_mkClassInstance(wintereffects_ScaledShapeFactory__C585756_VT);
+    r0 = pxsim_pxtcore_mkClassInstance(wintereffects_ScaledShapeFactory__C586713_VT);
     s.tmp_0 = r0;
-    s.tmp_1 = wintereffects_ScaledShapeFactory_constructor__P585761_mk(s);
+    s.tmp_1 = wintereffects_ScaledShapeFactory_constructor__P586718_mk(s);
     s.tmp_1.arg0 = s.tmp_0;
     s.tmp_1.arg1 = 100;
     s.tmp_1.arg2 = 4;
-    s.tmp_2 = wintereffects_snowballShapes__P586278_mk(s);
+    s.tmp_2 = wintereffects_snowballShapes__P587235_mk(s);
     s.callLocIdx = 136; s.pc = 2; return s.tmp_2;
   case 2:
     r0 = s.retval;
@@ -7668,34 +7668,34 @@ switch (step) {
     s.callLocIdx = 137; s.pc = 1; return s.tmp_1;
   case 1:
     r0 = s.retval;
-    s.factory___586290 = (s.tmp_0);
+    s.factory___587247 = (s.tmp_0);
     r0 = pxsim_pxtcore_mkClassInstance(particles_ParticleSource__C565724_VT);
     s.tmp_0 = r0;
     s.tmp_1 = particles_ParticleSource_constructor__P565729_mk(s);
     s.tmp_1.arg0 = s.tmp_0;
     s.tmp_1.arg1 = s.arg0;
     s.tmp_1.arg2 = s.arg1;
-    s.tmp_1.arg3 = s.factory___586290;
+    s.tmp_1.arg3 = s.factory___587247;
     s.callLocIdx = 138; s.pc = 3; return s.tmp_1;
   case 3:
     r0 = s.retval;
-    s.src___586295 = (s.tmp_0);
-    r0 = s.src___586295;
+    s.src___587252 = (s.tmp_0);
+    r0 = s.src___587252;
     return leave(s, r0)
   default: oops()
 } } }
-snowball_inline__P586287.info = {"start":10831,"length":345,"line":274,"column":65,"endLine":282,"endColumn":5,"fileName":"main.ts","functionName":"inline","argumentNames":["anchor","particlesPerSecond"]}
+snowball_inline__P587244.info = {"start":10831,"length":345,"line":274,"column":65,"endLine":282,"endColumn":5,"fileName":"main.ts","functionName":"inline","argumentNames":["anchor","particlesPerSecond"]}
 
-function snowball_inline__P586287_mk(s) {
+function snowball_inline__P587244_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: snowball_inline__P586287, depth: s.depth + 1,
+        parent: s, fn: snowball_inline__P587244, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
   tmp_2: undefined,
-  factory___586290: undefined,
-  src___586295: undefined,
+  factory___587247: undefined,
+  src___587252: undefined,
   arg0: undefined,
   arg1: undefined,
 } }
@@ -7704,7 +7704,7 @@ function snowball_inline__P586287_mk(s) {
 
 
 
-function wintereffects_snowballShapes__P586278(s) {
+function wintereffects_snowballShapes__P587235(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -7716,25 +7716,25 @@ switch (step) {
 
     r0 = pxsim_Array__mk();
     s.tmp_0 = r0;
-    r0 = pxsim.image.ofBuffer(_hex586281);
+    r0 = pxsim.image.ofBuffer(_hex587238);
     s.tmp_1 = r0;
     r0 = pxsim_Array__push(s.tmp_0, s.tmp_1);
-    r0 = pxsim.image.ofBuffer(_hex586283);
+    r0 = pxsim.image.ofBuffer(_hex587240);
     s.tmp_2 = r0;
     r0 = pxsim_Array__push(s.tmp_0, s.tmp_2);
-    r0 = pxsim.image.ofBuffer(_hex586285);
+    r0 = pxsim.image.ofBuffer(_hex587242);
     s.tmp_3 = r0;
     r0 = pxsim_Array__push(s.tmp_0, s.tmp_3);
     r0 = s.tmp_0;
     return leave(s, r0)
   default: oops()
 } } }
-wintereffects_snowballShapes__P586278.info = {"start":8264,"length":2452,"line":216,"column":4,"endLine":271,"endColumn":5,"fileName":"main.ts","functionName":"snowballShapes","argumentNames":[]}
+wintereffects_snowballShapes__P587235.info = {"start":8264,"length":2452,"line":216,"column":4,"endLine":271,"endColumn":5,"fileName":"main.ts","functionName":"snowballShapes","argumentNames":[]}
 
-function wintereffects_snowballShapes__P586278_mk(s) {
+function wintereffects_snowballShapes__P587235_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: wintereffects_snowballShapes__P586278, depth: s.depth + 1,
+        parent: s, fn: wintereffects_snowballShapes__P587235, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -7742,9 +7742,9 @@ function wintereffects_snowballShapes__P586278_mk(s) {
   tmp_3: undefined,
 } }
 
-const _hex586281 = pxsim.BufferMethods.createBufferFromHex("8704100010000000000010999909000000109911116906000091111111d169001019111111119d069011d1111111dd0891111d111111d18619d111111111d18b191111111111d18d191111111111d18d191111111111dd8b911111111111dd869011111111d1bd089019111111dd6b08009911d1ddbd8600009096ddbd8608000000606666060000")
-const _hex586283 = pxsim.BufferMethods.createBufferFromHex("870410001000000000000000000000000000000000000000000010999909000000109911116906000091111111d169001019111111119d069011111d1111dd08911111d11111d186191111111d11d18b191111111d11dd8b911111111111dd869011111111d1bd089019111111dd6b08009911d1ddbd8600009096ddbd8608000000606666060000")
-const _hex586285 = pxsim.BufferMethods.createBufferFromHex("87041000100000000000109909000000001099116906000000911111d169000010191111119d06009011111111dd08009111111111d186001911111111d18b001911111111d18d0019d1111111d18d0019d1111111dd8b0091111d1111dd860090111111d1bd080090191111dd6b0800009911ddbd860000009096bd860800000000606606000000")
+const _hex587238 = pxsim.BufferMethods.createBufferFromHex("8704100010000000000010999909000000109911116906000091111111d169001019111111119d069011d1111111dd0891111d111111d18619d111111111d18b191111111111d18d191111111111d18d191111111111dd8b911111111111dd869011111111d1bd089019111111dd6b08009911d1ddbd8600009096ddbd8608000000606666060000")
+const _hex587240 = pxsim.BufferMethods.createBufferFromHex("870410001000000000000000000000000000000000000000000010999909000000109911116906000091111111d169001019111111119d069011111d1111dd08911111d11111d186191111111d11d18b191111111d11dd8b911111111111dd869011111111d1bd089019111111dd6b08009911d1ddbd8600009096ddbd8608000000606666060000")
+const _hex587242 = pxsim.BufferMethods.createBufferFromHex("87041000100000000000109909000000001099116906000000911111d169000010191111119d06009011111111dd08009111111111d186001911111111d18b001911111111d18d0019d1111111d18d0019d1111111dd8b0091111d1111dd860090111111d1bd080090191111dd6b0800009911ddbd860000009096bd860800000000606606000000")
 
 
 
@@ -38540,7 +38540,7 @@ function sprites_BaseSprite___visible__P564726_mk(s) {
 
 
 
-function wintereffects_ScaledShapeFactory_createParticle__P585758(s) {
+function wintereffects_ScaledShapeFactory_createParticle__P586715(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -38550,23 +38550,23 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.p___585832 = undefined;
-    s.pImage___585845 = undefined;
+    s.p___586789 = undefined;
+    s.pImage___586802 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.arg1 = (s.lambdaArgs[1]);
       s.lambdaArgs = null;
     }
     r0 = s.arg0;
-    if (!checkSubtype(r0, wintereffects_ScaledShapeFactory__C585756_VT)) failedCast(r0);
+    if (!checkSubtype(r0, wintereffects_ScaledShapeFactory__C586713_VT)) failedCast(r0);
     s.tmp_0 = particles_SprayFactory_createParticle__P565766_mk(s);
     s.tmp_0.arg0 = s.arg0;
     s.tmp_0.arg1 = s.arg1;
     s.callLocIdx = 66; s.pc = 1; return s.tmp_0;
   case 1:
     r0 = s.retval;
-    s.p___585832 = (r0);
-    s.tmp_0 = r0 = s.p___585832;
+    s.p___586789 = (r0);
+    s.tmp_0 = r0 = s.p___586789;
     s.tmp_2 = Math_FastRandom_randomRange__P565636_mk(s);
     r0 = s.arg0.fields["galois"];
     s.tmp_2.arg0 = r0;
@@ -38584,13 +38584,13 @@ switch (step) {
     r0 = (s.tmp_0).fields["color"] = (s.tmp_1);
     r0 = s.arg0.fields["sources"];
     s.tmp_0 = r0;
-    r0 = s.p___585832.fields["color"];
+    r0 = s.p___586789.fields["color"];
     s.tmp_2 = r0;
     r0 = pxsim.Math_.floor(s.tmp_2);
     s.tmp_1 = r0;
     r0 = pxsim_Array__getAt(s.tmp_0, s.tmp_1);
-    s.pImage___585845 = (r0);
-    s.tmp_0 = r0 = s.p___585832;
+    s.pImage___586802 = (r0);
+    s.tmp_0 = r0 = s.p___586789;
     s.tmp_3 = Math_FastRandom_randomRange__P565636_mk(s);
     r0 = s.arg0.fields["galois"];
     s.tmp_3.arg0 = r0;
@@ -38605,35 +38605,35 @@ switch (step) {
     r0 = (s.tmp_2 / 100);
     s.tmp_1 = r0;
     r0 = (s.tmp_0).fields["data"] = (s.tmp_1);
-    s.tmp_0 = wintereffects_ScaledShapeFactory_positionParticle__P585759_mk(s);
+    s.tmp_0 = wintereffects_ScaledShapeFactory_positionParticle__P586716_mk(s);
     s.tmp_0.arg0 = s.arg0;
     s.tmp_0.arg1 = s.arg1;
-    s.tmp_0.arg2 = s.p___585832;
-    s.tmp_0.arg3 = s.pImage___585845;
+    s.tmp_0.arg2 = s.p___586789;
+    s.tmp_0.arg3 = s.pImage___586802;
     s.callLocIdx = 69; s.pc = 4; return s.tmp_0;
   case 4:
     r0 = s.retval;
     r0 = s.arg0.fields["particleLifespan"];
     s.tmp_0 = r0;
-    r0 = (s.p___585832).fields["lifespan"] = (s.tmp_0);
-    r0 = s.p___585832;
+    r0 = (s.p___586789).fields["lifespan"] = (s.tmp_0);
+    r0 = s.p___586789;
     return leave(s, r0)
   default: oops()
 } } }
-wintereffects_ScaledShapeFactory_createParticle__P585758.info = {"start":3666,"length":459,"line":116,"column":8,"endLine":124,"endColumn":9,"fileName":"main.ts","functionName":"createParticle","argumentNames":["this","anchor"]}
+wintereffects_ScaledShapeFactory_createParticle__P586715.info = {"start":3666,"length":459,"line":116,"column":8,"endLine":124,"endColumn":9,"fileName":"main.ts","functionName":"createParticle","argumentNames":["this","anchor"]}
 
-function wintereffects_ScaledShapeFactory_createParticle__P585758_mk(s) {
+function wintereffects_ScaledShapeFactory_createParticle__P586715_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: wintereffects_ScaledShapeFactory_createParticle__P585758, depth: s.depth + 1,
+        parent: s, fn: wintereffects_ScaledShapeFactory_createParticle__P586715, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
   tmp_2: undefined,
   tmp_3: undefined,
   tmp_4: undefined,
-  p___585832: undefined,
-  pImage___585845: undefined,
+  p___586789: undefined,
+  pImage___586802: undefined,
   arg0: undefined,
   arg1: undefined,
 } }
@@ -38642,7 +38642,7 @@ function wintereffects_ScaledShapeFactory_createParticle__P585758_mk(s) {
 
 
 
-function wintereffects_ScaledShapeFactory_positionParticle__P585759(s) {
+function wintereffects_ScaledShapeFactory_positionParticle__P586716(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -38660,7 +38660,7 @@ switch (step) {
       s.lambdaArgs = null;
     }
     r0 = s.arg0;
-    if (!checkSubtype(r0, wintereffects_ScaledShapeFactory__C585756_VT)) failedCast(r0);
+    if (!checkSubtype(r0, wintereffects_ScaledShapeFactory__C586713_VT)) failedCast(r0);
     r0 = s.arg0.fields["spawnDirection"];
     s.tmp_0 = r0;
     r0 = pxsim_pxtcore.switch_eq(0, s.tmp_0);
@@ -39538,12 +39538,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-wintereffects_ScaledShapeFactory_positionParticle__P585759.info = {"start":4135,"length":2696,"line":126,"column":8,"endLine":174,"endColumn":9,"fileName":"main.ts","functionName":"positionParticle","argumentNames":["this","anchor","p","pImage"]}
+wintereffects_ScaledShapeFactory_positionParticle__P586716.info = {"start":4135,"length":2696,"line":126,"column":8,"endLine":174,"endColumn":9,"fileName":"main.ts","functionName":"positionParticle","argumentNames":["this","anchor","p","pImage"]}
 
-function wintereffects_ScaledShapeFactory_positionParticle__P585759_mk(s) {
+function wintereffects_ScaledShapeFactory_positionParticle__P586716_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: wintereffects_ScaledShapeFactory_positionParticle__P585759, depth: s.depth + 1,
+        parent: s, fn: wintereffects_ScaledShapeFactory_positionParticle__P586716, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -41560,7 +41560,7 @@ function effects_SceneAnchor_height__P567803_mk(s) {
 
 
 
-function wintereffects_ScaledShapeFactory_drawParticle__P585760(s) {
+function wintereffects_ScaledShapeFactory_drawParticle__P586717(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -41570,9 +41570,9 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.pImage___586245 = undefined;
-    s.width___586253 = undefined;
-    s.height___586259 = undefined;
+    s.pImage___587202 = undefined;
+    s.width___587210 = undefined;
+    s.height___587216 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.arg1 = (s.lambdaArgs[1]);
@@ -41581,7 +41581,7 @@ switch (step) {
       s.lambdaArgs = null;
     }
     r0 = s.arg0;
-    if (!checkSubtype(r0, wintereffects_ScaledShapeFactory__C585756_VT)) failedCast(r0);
+    if (!checkSubtype(r0, wintereffects_ScaledShapeFactory__C586713_VT)) failedCast(r0);
     r0 = s.arg0.fields["rotateImagesRate"];
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
@@ -41700,19 +41700,19 @@ switch (step) {
     r0 = pxsim.Math_.floor(s.tmp_2);
     s.tmp_1 = r0;
     r0 = pxsim_Array__getAt(s.tmp_0, s.tmp_1);
-    s.pImage___586245 = (r0);
-    r0 = pxsim_ImageMethods.width(s.pImage___586245);
+    s.pImage___587202 = (r0);
+    r0 = pxsim_ImageMethods.width(s.pImage___587202);
     s.tmp_0 = r0;
     r0 = s.arg1.fields["data"];
     s.tmp_1 = r0;
     r0 = (s.tmp_0 * s.tmp_1);
-    s.width___586253 = (r0);
-    r0 = pxsim_ImageMethods.height(s.pImage___586245);
+    s.width___587210 = (r0);
+    r0 = pxsim_ImageMethods.height(s.pImage___587202);
     s.tmp_0 = r0;
     r0 = s.arg1.fields["data"];
     s.tmp_1 = r0;
     r0 = (s.tmp_0 * s.tmp_1);
-    s.height___586259 = (r0);
+    s.height___587216 = (r0);
     s.tmp_0 = helpers_imageBlit__P564585_mk(s);
     s.tmp_0.arg0 = globals.screen___564662;
     r0 = (s.arg2 + 128);
@@ -41723,14 +41723,14 @@ switch (step) {
     s.tmp_2 = r0;
     r0 = (s.tmp_2 >> 8);
     s.tmp_0.arg2 = r0;
-    s.tmp_0.arg3 = s.width___586253;
-    s.tmp_0.arg4 = s.height___586259;
-    s.tmp_0.arg5 = s.pImage___586245;
+    s.tmp_0.arg3 = s.width___587210;
+    s.tmp_0.arg4 = s.height___587216;
+    s.tmp_0.arg5 = s.pImage___587202;
     s.tmp_0.arg6 = 0;
     s.tmp_0.arg7 = 0;
-    r0 = pxsim_ImageMethods.width(s.pImage___586245);
+    r0 = pxsim_ImageMethods.width(s.pImage___587202);
     s.tmp_0.arg8 = r0;
-    r0 = pxsim_ImageMethods.height(s.pImage___586245);
+    r0 = pxsim_ImageMethods.height(s.pImage___587202);
     s.tmp_0.arg9 = r0;
     s.tmp_0.arg10 = true;
     s.tmp_0.arg11 = false;
@@ -41741,12 +41741,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-wintereffects_ScaledShapeFactory_drawParticle__P585760.info = {"start":6841,"length":1411,"line":176,"column":8,"endLine":213,"endColumn":9,"fileName":"main.ts","functionName":"drawParticle","argumentNames":["this","p","x","y"]}
+wintereffects_ScaledShapeFactory_drawParticle__P586717.info = {"start":6841,"length":1411,"line":176,"column":8,"endLine":213,"endColumn":9,"fileName":"main.ts","functionName":"drawParticle","argumentNames":["this","p","x","y"]}
 
-function wintereffects_ScaledShapeFactory_drawParticle__P585760_mk(s) {
+function wintereffects_ScaledShapeFactory_drawParticle__P586717_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: wintereffects_ScaledShapeFactory_drawParticle__P585760, depth: s.depth + 1,
+        parent: s, fn: wintereffects_ScaledShapeFactory_drawParticle__P586717, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -41759,9 +41759,9 @@ function wintereffects_ScaledShapeFactory_drawParticle__P585760_mk(s) {
   tmp_8: undefined,
   tmp_9: undefined,
   tmp_10: undefined,
-  pImage___586245: undefined,
-  width___586253: undefined,
-  height___586259: undefined,
+  pImage___587202: undefined,
+  width___587210: undefined,
+  height___587216: undefined,
   arg0: undefined,
   arg1: undefined,
   arg2: undefined,
@@ -43215,15 +43215,15 @@ const particles_SprayFactory__C565764_VT = mkVTable({
     "setDirection": particles_SprayFactory_setDirection__P565769,
   },
 });
-const wintereffects_ScaledShapeFactory__C585756_VT = mkVTable({
+const wintereffects_ScaledShapeFactory__C586713_VT = mkVTable({
   name: "ScaledShapeFactory",
   numFields: 12,
   classNo: 28,
   lastSubtypeNo: 28,
   maxBgInstances: null,
   methods: {
-    "createParticle": wintereffects_ScaledShapeFactory_createParticle__P585758,
-    "drawParticle": wintereffects_ScaledShapeFactory_drawParticle__P585760,
+    "createParticle": wintereffects_ScaledShapeFactory_createParticle__P586715,
+    "drawParticle": wintereffects_ScaledShapeFactory_drawParticle__P586717,
   },
   iface: {
     "speed": null,
@@ -43250,9 +43250,9 @@ const wintereffects_ScaledShapeFactory__C585756_VT = mkVTable({
     "set/randomlySwitchDirectionsRate": null,
     "spawnDirection": null,
     "set/spawnDirection": null,
-    "createParticle": wintereffects_ScaledShapeFactory_createParticle__P585758,
-    "positionParticle": wintereffects_ScaledShapeFactory_positionParticle__P585759,
-    "drawParticle": wintereffects_ScaledShapeFactory_drawParticle__P585760,
+    "createParticle": wintereffects_ScaledShapeFactory_createParticle__P586715,
+    "positionParticle": wintereffects_ScaledShapeFactory_positionParticle__P586716,
+    "drawParticle": wintereffects_ScaledShapeFactory_drawParticle__P586717,
     "setSpeed": particles_SprayFactory_setSpeed__P565768,
     "setDirection": particles_SprayFactory_setDirection__P565769,
   },
@@ -44229,7 +44229,7 @@ const sprites_BaseSpriteSayRenderer__C564887_VT = mkVTable({
   },
 });
 
-const breakpoints = setupDebugger(1, ["currentEffect___566956","snowball___585714","setCurrentEffect___566957","holidayCookies___585717","snowflakes___585719","candyCanes___585721"])
+const breakpoints = setupDebugger(1, ["currentEffect___566956","snowball___586671","setCurrentEffect___566957","holidayCookies___586674","snowflakes___586676","candyCanes___586678"])
 
-return _main___P586606
+return _main___P587563
 })
