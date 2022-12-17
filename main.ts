@@ -4,7 +4,7 @@
 //% block="winter fun"
 namespace wintereffects {
 
-    export enum SpawningDirection {
+    export enum SpawnDirection {
         Top,
         Bottom,
         Left,
@@ -15,40 +15,39 @@ namespace wintereffects {
         BottomRight,
     };
 
-    // returns 
-    function spawningDirectionToArcCenter(sd: SpawningDirection) {
+    function spawningDirectionToArcCenter(sd: SpawnDirection) {
         switch (sd) {
-            case SpawningDirection.Top:
+            case SpawnDirection.Top:
                 return 0;
-            case SpawningDirection.Bottom:
+            case SpawnDirection.Bottom:
                 return 180;
-            case SpawningDirection.Left:
+            case SpawnDirection.Left:
                 return 90;
-            case SpawningDirection.Right:
+            case SpawnDirection.Right:
                 return 270;
-            case SpawningDirection.TopRight:
+            case SpawnDirection.TopRight:
                 return 315;
-            case SpawningDirection.BottomLeft:
+            case SpawnDirection.BottomLeft:
                 return 135;
-            case SpawningDirection.BottomRight:
+            case SpawnDirection.BottomRight:
                 return 225;
-            case SpawningDirection.TopLeft:
+            case SpawnDirection.TopLeft:
             default:
                 return 45;
         }
     }
 
-    function spawningDirectionToRange(sd: SpawningDirection) {
+    function spawningDirectionToRange(sd: SpawnDirection) {
         switch (sd) {
-            case SpawningDirection.Top:
-            case SpawningDirection.Bottom:
-            case SpawningDirection.Left:
-            case SpawningDirection.Right:
+            case SpawnDirection.Top:
+            case SpawnDirection.Bottom:
+            case SpawnDirection.Left:
+            case SpawnDirection.Right:
                 return 35;
-            case SpawningDirection.TopRight:
-            case SpawningDirection.BottomLeft:
-            case SpawningDirection.BottomRight:
-            case SpawningDirection.TopLeft:
+            case SpawnDirection.TopRight:
+            case SpawnDirection.BottomLeft:
+            case SpawnDirection.BottomRight:
+            case SpawnDirection.TopLeft:
             default:
                 return 90;
         }
@@ -63,9 +62,9 @@ namespace wintereffects {
         rotateImagesRate: number;
         growthRate: number;
         randomlySwitchDirectionsRate: number;
-        spawnDirection: SpawningDirection;
+        protected spawnDirection: SpawnDirection;
 
-        constructor(particleSpeed: number, spawnDirection: SpawningDirection, sources: Image[]) {
+        constructor(particleSpeed: number, spawnDirection: SpawnDirection, sources: Image[]) {
             super(
                 particleSpeed, // particle speed
                 spawningDirectionToArcCenter(spawnDirection), // arc center degrees
@@ -76,7 +75,23 @@ namespace wintereffects {
             this.minPercent = 30;
 
             this.maxPercent = 180;
-            this.particleLifespan = 2500;
+            switch (spawnDirection) {
+                case SpawnDirection.Top:
+                case SpawnDirection.Bottom:
+                    this.particleLifespan = (screen.height / particleSpeed) * 1000 * 1.2;
+                    break;
+                case SpawnDirection.Left:
+                case SpawnDirection.Right:
+                    this.particleLifespan = (screen.width / particleSpeed) * 1000 * 1.2;
+                    break;
+                case SpawnDirection.TopLeft:
+                case SpawnDirection.TopRight:
+                case SpawnDirection.BottomLeft:
+                case SpawnDirection.BottomRight:
+                default:
+                    this.particleLifespan = (screen.width / particleSpeed) * 1000 * 1.5;
+                    break;
+            }
             this.galois = new Math.FastRandom();
         }
 
@@ -92,47 +107,47 @@ namespace wintereffects {
 
         positionParticle(anchor: particles.ParticleAnchor, p: particles.Particle, pImage: Image) {
             switch (this.spawnDirection) {
-                case SpawningDirection.Top:
+                case SpawnDirection.Top:
                     p._y = Fx8(anchor.y - (anchor.height >> 1) - pImage.height);
                     p._x = Fx8(this.galois.randomRange(
                         anchor.x - (anchor.width >> 1) - pImage.width,
                         anchor.x + (anchor.width >> 1) + pImage.width
                     ));
                     break;
-                case SpawningDirection.Bottom:
+                case SpawnDirection.Bottom:
                     p._y = Fx8(anchor.y + (anchor.height >> 1) + pImage.height);
                     p._x = Fx8(this.galois.randomRange(
                         anchor.x - (anchor.width >> 1) - pImage.width,
                         anchor.x + (anchor.width >> 1) + pImage.width
                     ));
                     break;
-                case SpawningDirection.Left:
+                case SpawnDirection.Left:
                     p._y = Fx8(this.galois.randomRange(
                         anchor.y - (anchor.height >> 1) - pImage.height,
                         anchor.y + (anchor.height >> 1) + pImage.height
                     ));
                     p._x = Fx8(anchor.x - (anchor.width >> 1) - pImage.width);
                     break;
-                case SpawningDirection.Right:
+                case SpawnDirection.Right:
                     p._y = Fx8(this.galois.randomRange(
                         anchor.y - (anchor.height >> 1) - pImage.height,
                         anchor.y + (anchor.height >> 1) + pImage.height
                     ));
                     p._x = Fx8(anchor.x + (anchor.width >> 1) + pImage.width);
                     break;
-                case SpawningDirection.TopRight:
+                case SpawnDirection.TopRight:
                     p._x = Fx8(anchor.x + (anchor.width >> 1) + (pImage.width * p.data));
                     p._y = Fx8(anchor.y - (anchor.height >> 1) - (pImage.height * p.data));
                     break;
-                case SpawningDirection.BottomLeft:
+                case SpawnDirection.BottomLeft:
                     p._x = Fx8(anchor.x - (anchor.width >> 1) - (pImage.width * p.data));
                     p._y = Fx8(anchor.y + (anchor.height >> 1) + (pImage.height * p.data));
                     break;
-                case SpawningDirection.BottomRight:
+                case SpawnDirection.BottomRight:
                     p._x = Fx8(anchor.x + (anchor.width >> 1) + (pImage.width * p.data));
                     p._y = Fx8(anchor.y + (anchor.height >> 1) + (pImage.height * p.data));
                     break;
-                case SpawningDirection.TopLeft:
+                case SpawnDirection.TopLeft:
                 default:
                     p._x = Fx8(anchor.x - (anchor.width >> 1) - (pImage.width * p.data));
                     p._y = Fx8(anchor.y - (anchor.height >> 1) - (pImage.height * p.data));
@@ -149,7 +164,7 @@ namespace wintereffects {
                 p.color += this.randomlySwitchDirectionsRate;
                 if (this.galois.percentChance(Math.floor(((p.color * 100) % 100) + (100 * this.randomlySwitchDirectionsRate)))) {
                     p.color = Math.floor(p.color);
-                    if (this.spawnDirection === SpawningDirection.Left || this.spawnDirection === SpawningDirection.Right) {
+                    if (this.spawnDirection === SpawnDirection.Left || this.spawnDirection === SpawnDirection.Right) {
                         p.vy = Fx.neg(p.vy);
                     } else {
                         p.vx = Fx.neg(p.vx);
@@ -241,7 +256,7 @@ namespace wintereffects {
     export const snowball = new effects.ScreenEffect(15, 250, 0, function (anchor: particles.ParticleAnchor, particlesPerSecond: number) {
         const factory = new ScaledShapeFactory(
             100, // particle speed
-            SpawningDirection.TopLeft,
+            SpawnDirection.TopLeft,
             snowballShapes()
         );
         const src = new particles.ParticleSource(anchor, particlesPerSecond, factory);
@@ -458,7 +473,7 @@ namespace wintereffects {
     export const candyCanes = new effects.ScreenEffect(15, 35, 0, function (anchor: particles.ParticleAnchor, particlesPerSecond: number) {
         const factory = new ScaledShapeFactory(
             100, // particle speed
-            SpawningDirection.TopLeft,
+            SpawnDirection.TopLeft,
             candyCaneShapes()
         );
 
@@ -599,7 +614,7 @@ namespace wintereffects {
     export const holidayCookies = new effects.ScreenEffect(15, 70, 0, function (anchor: particles.ParticleAnchor, particlesPerSecond: number) {
         const factory = new ScaledShapeFactory(
             135, // particle speed
-            SpawningDirection.Top,
+            SpawnDirection.Top,
             cookieShapes()
         );
         factory.minPercent = 1;
@@ -669,14 +684,13 @@ namespace wintereffects {
     export const snowflakes = new effects.ScreenEffect(15, 80, 0, function (anchor: particles.ParticleAnchor, particlesPerSecond: number) {
         const factory = new ScaledShapeFactory(
             30, // particle speed
-            SpawningDirection.Top,
+            SpawnDirection.Top,
             snowflakeShapes()
         );
 
         factory.randomlySwitchDirectionsRate = 0.01;
         factory.minPercent = 50;
         factory.maxPercent = 200;
-        factory.particleLifespan = 5000;
 
         const src = new particles.ParticleSource(anchor, particlesPerSecond, factory);
         return src;
