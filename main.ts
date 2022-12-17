@@ -775,6 +775,48 @@ namespace wintereffects {
         });
     }
 
+    //% block="custom effect $sourceImages from the $dir speed $particleSpeed || min $minScalePercent max $maxScalePercent growing $growthRate"
+    //% blockId="wintercustomscaledeffect"
+    //% sourceImages.shadow="lists_create_with"
+    //% sourceImages.defl=screen_image_picker
+    //% particleSpeed.defl=50
+    //% minScalePercent.defl=50
+    //% maxScalePercent.defl=150
+    //% growthRate.defl=3
+    //% blockSetVariable="myEffect"
+    //% inlineInputModeLimit=3
+    //% expandableArgumentBreaks="3,4,5"
+    export function customScaledEffect(
+        sourceImages: Image[],
+        dir: SpawnDirection,
+        particleSpeed: number,
+        minScalePercent?: number,
+        maxScalePercent?: number,
+        growthRate?: number
+    ): effects.ScreenEffect {
+
+        return new effects.ScreenEffect(15, 50, 0, function (anchor: particles.ParticleAnchor, particlesPerSecond: number) {
+            const factory = new ScaledShapeFactory(
+                particleSpeed,
+                dir,
+                sourceImages
+            );
+
+            if (minScalePercent != undefined) {
+                factory.minPercent = minScalePercent;
+            }
+            if (maxScalePercent != undefined) {
+                factory.maxPercent = maxScalePercent;
+            }
+            factory.growthRate = growthRate;
+            // todo: Expose these or no?
+            // would need to note that they're mutually exclusive due to implementation details~
+            // factory.rotateImagesRate = .25;
+            // factory.randomlySwitchDirectionsRate = 0.01;
+            return new particles.ParticleSource(anchor, particlesPerSecond, factory);
+        });
+    }
+
     //% block="start custom effect $ef at rate $pps||for $lifespan ms"
     //% lifespan.shadow=timePicker
     //% pps.defl=60
@@ -790,6 +832,6 @@ namespace wintereffects {
     //% ef.defl="myEffect"
     //% blockId="stopcustomeffectwinter"
     export function stopCustomEffect(ef: effects.ScreenEffect) {
-        ef.endScreenEffect()
+        ef.endScreenEffect();
     }
 }
