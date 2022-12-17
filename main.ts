@@ -1,3 +1,7 @@
+//% weight=88.5
+//% color="#1382d1"
+//% icon="\uf2dc"
+//% block="winter fun"
 namespace wintereffects {
 
     export enum SpawningDirection {
@@ -624,4 +628,9 @@ namespace wintereffects {
         const src = new particles.ParticleSource(anchor, particlesPerSecond, factory);
         return src;
     });
+
+    //% block
+    export function stub() {
+
+    }
 }
