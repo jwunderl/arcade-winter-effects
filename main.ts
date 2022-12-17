@@ -5,15 +5,34 @@
 namespace wintereffects {
 
     export enum SpawnDirection {
+        //% block="top"
         Top,
+        //% block="bottom"
         Bottom,
+        //% block="left"
         Left,
+        //% block="right"
         Right,
+        //% block="top left"
         TopLeft,
+        //% block="top right"
         TopRight,
+        //% block="bottom left"
         BottomLeft,
+        //% block="bottom right"
         BottomRight,
     };
+
+    export enum WinteryShapes {
+        //% block="snowballs"
+        Snowballs,
+        //% block="candy canes"
+        CandyCanes,
+        //% block="holiday cookies"
+        HolidayCookies,
+        //% block="snow flakes"
+        Snowflakes,
+    }
 
     function spawningDirectionToArcCenter(sd: SpawnDirection) {
         switch (sd) {
@@ -53,7 +72,7 @@ namespace wintereffects {
         }
     }
 
-    class ScaledShapeFactory extends particles.SprayFactory {
+    export class ScaledShapeFactory extends particles.SprayFactory {
         protected sources: Image[];
         protected galois: Math.FastRandom;
         minPercent: number;
@@ -696,8 +715,81 @@ namespace wintereffects {
         return src;
     });
 
-    //% block
-    export function stub() {
+    //% block="custom effect $imageType from the $dir"
+    //% blockId="wintercustomthemedeffect"
+    //% blockSetVariable="myEffect"
+    export function themedCustomEffect(
+        imageType: WinteryShapes,
+        dir: SpawnDirection
+    ): effects.ScreenEffect {
+        let sourceImages: Image[];
+        let speed = 0;
+        switch (imageType) {
+            case WinteryShapes.CandyCanes:
+                sourceImages = candyCaneShapes();
+                speed = 100;
+                break;
+            case WinteryShapes.HolidayCookies:
+                sourceImages = cookieShapes();
+                speed = 100;
+                break;
+            case WinteryShapes.Snowflakes:
+                sourceImages = snowflakeShapes();
+                speed = 30;
+            case WinteryShapes.Snowballs:
+            default:
+                sourceImages = snowballShapes();
+                speed = 100;
+                break;
+        }
 
+        return new effects.ScreenEffect(15, 50, 0, function (anchor: particles.ParticleAnchor, particlesPerSecond: number) {
+            const factory = new ScaledShapeFactory(
+                speed,
+                dir,
+                sourceImages
+            );
+
+            switch (imageType) {
+                case WinteryShapes.CandyCanes:
+                    factory.minPercent = 15;
+                    factory.maxPercent = 150;
+                    factory.rotateImagesRate = .25;
+                    break;
+                case WinteryShapes.HolidayCookies:
+                    break;
+                case WinteryShapes.Snowflakes:
+                    factory.randomlySwitchDirectionsRate = 0.01;
+                    factory.minPercent = 50;
+                    factory.maxPercent = 200;
+                    break;
+                case WinteryShapes.Snowballs:
+                    factory.minPercent = 1;
+                    factory.maxPercent = 40;
+                    factory.growthRate = 0.07;
+                default:
+                    break;
+            }
+
+            return new particles.ParticleSource(anchor, particlesPerSecond, factory);
+        });
+    }
+
+    //% block="start custom effect $ef at rate $pps||for $lifespan ms"
+    //% lifespan.shadow=timePicker
+    //% pps.defl=60
+    //% ef.shadow=variables_get
+    //% ef.defl="myEffect"
+    //% blockId="startcustomeffectwinter"
+    export function startCustomEffect(ef: effects.ScreenEffect, pps: number, lifespan?: number) {
+        ef.startScreenEffect(lifespan, pps);
+    }
+
+    //% block="end custom effect $ef"
+    //% ef.shadow=variables_get
+    //% ef.defl="myEffect"
+    //% blockId="stopcustomeffectwinter"
+    export function stopCustomEffect(ef: effects.ScreenEffect) {
+        ef.endScreenEffect()
     }
 }
