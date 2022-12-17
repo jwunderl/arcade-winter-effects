@@ -736,6 +736,7 @@ namespace wintereffects {
             case WinteryShapes.Snowflakes:
                 sourceImages = snowflakeShapes();
                 speed = 30;
+                break;
             case WinteryShapes.Snowballs:
             default:
                 sourceImages = snowballShapes();
